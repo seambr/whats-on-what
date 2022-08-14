@@ -5,7 +5,7 @@ import "./SliderRow.css"
 import "swiper/css"
 import "swiper/css/navigation"
 import { Pagination, Navigation } from "swiper"
-function SliderRow({ row, rowIndex, rowTitle, width }) {
+function SliderRow({ row, rowIndex, rowTitle, width, isLast }) {
   function getSlidesPerView() {
     return 8
   }
@@ -28,7 +28,7 @@ function SliderRow({ row, rowIndex, rowTitle, width }) {
         className='mySwiper'>
         {row.map((movie, movieIndex) => (
           <SwiperSlide key={movieIndex} className='pane'>
-            <Temp movie={movie}></Temp>
+            <Temp movie={movie} isLast={isLast}></Temp>
           </SwiperSlide>
         ))}
       </Swiper>
@@ -38,11 +38,15 @@ function SliderRow({ row, rowIndex, rowTitle, width }) {
 
 export default SliderRow
 
-function Temp({ movie, children }) {
-  console.log("Movie", movie)
+function Temp({ movie, children, isLast }) {
   return (
     <div className='temp'>
-      <img className='temp__img' src={movie.posterLink} alt={movie.title} />
+      <img
+        className='temp__img'
+        src={movie.posterLink}
+        alt={movie.title}
+        loading='lazy'
+      />
     </div>
   )
 }

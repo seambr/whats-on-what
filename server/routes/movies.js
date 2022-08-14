@@ -3,15 +3,14 @@ const router = express.Router()
 const Movie = require("../models/movie")
 // localhost:3000/api/movies/5?services=["netflix","prime"]
 
-router.get("/:service/:page", async (req, res) => {
-  const PAGE_SIZE = 5
-  const page = req.params.page
-  const service = req.params.service
-  const startIndex = (page - 1) * PAGE_SIZE
-
+router.get("/", async (req, res) => {
   try {
-    const movies = await Movie.find({ availibility: service })
-    console.log(movies)
+    const PAGE_SIZE = 100
+    const page = req.query.page
+    const services = JSON.parse(req.query.service)
+    const startIndex = (page - 1) * PAGE_SIZE
+    console.log(req.query)
+    const movies = await Movie.find({ availibility: { $in: services } })
     if (startIndex > movies.length || startIndex < 0) {
       res.status(400).json({ message: "Page out of bounds" })
     }

@@ -1,0 +1,32 @@
+/* <>
+<div className='movie-grid'>
+  {movieArray.map((movie, index) => (
+    <div className='movie-card-container'>
+      <img src={movie.posterLink} alt={movie.title} />
+    </div>
+  ))}
+</div>
+</> */
+
+.movie-grid {
+  margin: auto;
+  display: grid;
+  width: fit-content;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+  row-gap: 20px;
+}
+.movie-card-container {
+  border-radius: 5px;
+  overflow: clip;
+  height: fit-content;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+.movie-card-container:hover {
+  transform: scale(1.6);
+}
+.movie-card-container img {
+  width: 100%;
+}

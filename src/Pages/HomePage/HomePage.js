@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import Hero from "./Hero"
 import "./HomePage.css"
+import Grid from "./MovieGrid"
 import NavBar from "./NavBar"
 import Rows from "./Rows"
 const SubscriptionContext = React.createContext()
@@ -17,7 +18,8 @@ function HomePage() {
         value={{ subscribedServices, setSubscribedServices }}>
         <NavBar />
         <Hero />
-        <Rows rowCount={2} />
+        <Grid></Grid>
+        {/* <Rows rowCount={2} /> */}
       </SubscriptionContext.Provider>
     </div>
   )

@@ -37,7 +37,7 @@ function NavBar() {
               }))
             }>
             <img
-              className={subscribedServices.netflix ? "selected" : ""}
+              className={subscribedServices.Netflix ? "selected" : ""}
               src='../logos/netflix-logo.png'
               alt=''
             />
@@ -51,7 +51,7 @@ function NavBar() {
               }))
             }>
             <img
-              className={subscribedServices.prime ? "selected" : ""}
+              className={subscribedServices.Prime ? "selected" : ""}
               src='../logos/prime-logo.png'
               alt=''
             />
