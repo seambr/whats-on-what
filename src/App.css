@@ -2,7 +2,7 @@
   height: 100%;
 }
 html {
-  height: auto;
+  height: fit-content;
 }
 .app {
   width: 100%;

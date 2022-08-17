@@ -4,24 +4,29 @@ import "./HomePage.css"
 import Grid from "./MovieGrid"
 import NavBar from "./NavBar"
 import Rows from "./Rows"
+import ServiceContainer from "./ServiceContainer"
+import SearchProvider from "../../Contexts/SearchContext"
 const SubscriptionContext = React.createContext()
 
 function HomePage() {
   const [subscribedServices, setSubscribedServices] = useState({
-    Netflix: false,
-    Prime: false
+    netflix: true,
+    prime: false,
+    hbo: false
   })
 
   return (
-    <div className='home-page'>
-      <SubscriptionContext.Provider
-        value={{ subscribedServices, setSubscribedServices }}>
-        <NavBar />
-        <Hero />
-        <Grid></Grid>
-        {/* <Rows rowCount={2} /> */}
-      </SubscriptionContext.Provider>
-    </div>
+    <SearchProvider>
+      <div className='home-page'>
+        <SubscriptionContext.Provider
+          value={{ subscribedServices, setSubscribedServices }}>
+          <Hero />
+          <ServiceContainer></ServiceContainer>
+          <Grid></Grid>
+          {/* <Rows rowCount={2} /> */}
+        </SubscriptionContext.Provider>
+      </div>
+    </SearchProvider>
   )
 }
 export { SubscriptionContext }

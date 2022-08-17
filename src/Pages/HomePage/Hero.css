@@ -3,9 +3,9 @@
   position: relative;
   background-size: 100% auto;
   background-repeat: no-repeat;
-
+  background-color: #111;
   aspect-ratio: 2/1;
-  max-height: 600px;
+  max-height: 300px;
 }
 .hero__fade-bottom {
   width: 100%;
@@ -66,4 +66,12 @@
 .hero__btn:hover .hero__btn__text {
   display: block;
   color: white;
+}
+/*  */
+/*  */
+@media all and (max-width: 600px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+  }
 }

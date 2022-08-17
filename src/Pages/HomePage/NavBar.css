@@ -48,28 +48,3 @@
 .nav__menu > li:hover {
   color: rgb(0, 128, 255);
 }
-
-.subscription-container {
-  position: absolute;
-  width: 100%;
-  height: 50px;
-  background-color: rgba(132, 138, 139, 0.194);
-  top: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 50px;
-}
-.subscription-logo-container {
-  cursor: pointer;
-  max-height: 100px;
-  max-width: 100px;
-}
-.subscription-logo-container img {
-  width: 100%;
-  object-fit: contain;
-  filter: grayscale();
-}
-.subscription-logo-container img.selected {
-  filter: none;
-}

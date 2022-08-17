@@ -1,8 +1,10 @@
 import React, { useCallback, useRef, useState } from "react"
 import "./Grid.css"
-import axios from "axios"
-import { SubscriptionContext } from "./HomePage.js"
 import useMovieData from "./hooks/useMovieData"
+import MoviePoster from "../../Components/MoviePoster"
+import PosterSkeleton from "../../Skeletons/PosterSkeleton"
+import Skeleton from "react-loading-skeleton"
+
 function Grid() {
   const [pageNumber, setPageNumber] = useState(1)
   const { movieArray, isLoading } = useMovieData(pageNumber, setPageNumber)
@@ -25,25 +27,25 @@ function Grid() {
   )
 
   return (
-    <>
+    <div className='grid-container'>
       <div className='movie-grid'>
+        {isLoading && <PosterSkeleton></PosterSkeleton>}
+
         {movieArray.map((movie, index) => {
           if (index === movieArray.length - 1) {
             return (
-              <div className='movie-card-container' ref={lastElementRef}>
-                <img src={movie.posterLink} alt={movie.title} />
-              </div>
+              <MoviePoster
+                key={index}
+                movie={movie}
+                isLast={true}
+                lastElementRef={lastElementRef}></MoviePoster>
             )
           }
-          return (
-            <div className='movie-card-container'>
-              <img src={movie.posterLink} alt={movie.title} />
-            </div>
-          )
+          return <MoviePoster key={index} movie={movie}></MoviePoster>
         })}
         {isLoading && <h1>Loading...</h1>}
       </div>
-    </>
+    </div>
   )
 }
 

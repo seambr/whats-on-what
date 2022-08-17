@@ -1,32 +1,26 @@
-/* <>
-<div className='movie-grid'>
-  {movieArray.map((movie, index) => (
-    <div className='movie-card-container'>
-      <img src={movie.posterLink} alt={movie.title} />
-    </div>
-  ))}
-</div>
-</> */
-
+.grid-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .movie-grid {
   margin: auto;
+  margin-top: 100px;
   display: grid;
-  width: fit-content;
-  grid-template-columns: repeat(6, 1fr);
+  width: 65%;
+
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 20px;
-  row-gap: 20px;
+  row-gap: 4vh;
+  padding: 20px;
+  position: relative;
+  z-index: 100;
 }
-.movie-card-container {
-  border-radius: 5px;
-  overflow: clip;
-  height: fit-content;
-  padding: 0;
-  margin: 0;
-  display: flex;
-}
-.movie-card-container:hover {
-  transform: scale(1.6);
-}
-.movie-card-container img {
-  width: 100%;
+@media all and (max-width: 600px) {
+  .movie-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    padding: 5px;
+    row-gap: 10px;
+  }
 }

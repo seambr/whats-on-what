@@ -1,28 +1,29 @@
-import React, { useContext, useEffect, useState } from "react"
-import { SubscriptionContext } from "../HomePage.js"
+import React, { useEffect, useState } from "react"
+import { useSearch } from "../../../Contexts/SearchContext.js"
+
 import axios from "axios"
 function useMovieData(pageNumber, setPageNumber) {
-  const { subscribedServices, setSubscribedServices } =
-    useContext(SubscriptionContext)
+  const { query } = useSearch()
   const [isLoading, setIsLoading] = useState(true)
   const [movieArray, setMovieArray] = useState([])
   const services = JSON.stringify(
-    Object.keys(subscribedServices).filter((s) => subscribedServices[s])
+    Object.keys(query.subscribedServices).filter(
+      (s) => query.subscribedServices[s]
+    )
   )
   useEffect(() => {
     setMovieArray([])
     setPageNumber(1)
-  }, [subscribedServices])
+  }, [query])
   useEffect(() => {
     let cancel
-
     // localhost:3000/api/movies/1?services=["Netflix","Prime"]
     console.log("FETCHING PAGE", pageNumber)
     setIsLoading(true)
     axios({
       method: "GET",
-      url: `http://localhost:5000/api/movies/`,
-      params: { service: services, page: pageNumber },
+      url: `http://localhost:5000/api/movies/search/`,
+      params: { service: services, page: pageNumber, title: query.title },
       cancelToken: new axios.CancelToken((c) => (cancel = c))
     })
       .then((res) => {
@@ -34,7 +35,7 @@ function useMovieData(pageNumber, setPageNumber) {
         console.error(err)
       })
     return () => cancel()
-  }, [subscribedServices, pageNumber])
+  }, [query, pageNumber])
 
   return { movieArray, isLoading }
 }
