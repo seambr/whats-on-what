@@ -1,8 +1,15 @@
 * {
   font-family: "Poppins", sans-serif;
 }
+.fixed {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  box-shadow: 0px 3px 8px 6px black;
+}
 .home-page {
-  background-color: #111;
+  background-color: rgb(21, 21, 21);
 
   background-size: cover;
   background-attachment: fixed;

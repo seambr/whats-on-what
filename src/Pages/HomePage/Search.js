@@ -1,20 +1,17 @@
 import React, { useState } from "react"
 
 import { useSearch } from "../../Contexts/SearchContext"
-
+import useDebounce from "./hooks/useDebounce"
 import SearchResult from "./SearchResult"
 import "./Search.css"
 
 import useSearchMovies from "./hooks/useSearchMovies"
+import PosterSkeleton from "../../Skeletons/PosterSkeleton"
 function Search() {
   const [search, setSearch] = useState("")
-  const { movieArray, isLoading } = useSearchMovies(search)
+  const debouncedSearch = useDebounce(search, 500)
+  const { movieArray, isLoading } = useSearchMovies(debouncedSearch)
 
-  //   onChange={(e) =>
-  //     setQuery((old) => ({ ...old, title: e.target.value }))
-  //   }
-  console.log(search)
-  console.log(movieArray)
   return (
     <div className='search-container'>
       <form action=''>
@@ -27,9 +24,16 @@ function Search() {
         />
         {search.length > 0 && !isLoading && (
           <div className='search-results'>
-            <SearchResult movie={movieArray[0]}></SearchResult>
-            <SearchResult movie={movieArray[1]}></SearchResult>
-            <SearchResult movie={movieArray[2]}></SearchResult>
+            {movieArray[0] ? (
+              <SearchResult movie={movieArray[0]}></SearchResult>
+            ) : null}
+            {movieArray[1] ? (
+              <SearchResult movie={movieArray[1]}></SearchResult>
+            ) : null}
+            {movieArray[2] ? (
+              <SearchResult movie={movieArray[2]}></SearchResult>
+            ) : null}
+            {movieArray.length === 0 && <h1>Sorry, Can't Find That</h1>}
           </div>
         )}
       </form>

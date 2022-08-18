@@ -17,10 +17,10 @@ function workss() {
       .getAttribute("data-percent");
     const releaseDate = otherInfo.querySelector("p").innerText;
     return {
-      title: movieTitle,
-      posterLink: posterLink,
+      movieTitle: movieTitle,
+      moviePosterLink: posterLink,
       availibility: "Netflix",
-      rating: rating,
+      movieRating: rating,
       releaseDate: releaseDate
     };
   });

@@ -1,22 +1,40 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import { SubscriptionContext } from "./HomePage.js"
 import { useSearch } from "../../Contexts/SearchContext.js"
+import { BsChevronCompactDown, BsChevronCompactUp } from "react-icons/bs"
 function ServiceContainer() {
+  const [show, setShow] = useState(false)
+  const services = ["netflix", "prime", "hbo", "hulu", "disney"]
   return (
     <div className='subscription-container'>
       <div className='services'>
-        <Service
-          service='netflix'
-          imgSource='../logos/netflix-logo.png'></Service>
-        <Service service='prime' imgSource='../logos/prime-logo.png'></Service>
-        <Service service='hbo' imgSource='../logos/hbo-logo.webp'></Service>
-        <Service service='hulu' imgSource='../logos/hulu-logo.png'></Service>
+        {services.map((s, i) => (
+          <Service
+            key={i}
+            service={s}
+            imgSource={`../logos/${s}-icon.png`}></Service>
+        ))}
       </div>
-      <div className='filters'>
-        <Filters name='Genre'></Filters>
-        <Filters name='Type'></Filters>
-        <Filters name='Rating'></Filters>
-      </div>
+      {!show ? (
+        <BsChevronCompactDown
+          color='white'
+          cursor='pointer'
+          size={30}
+          onClick={() => setShow(true)}></BsChevronCompactDown>
+      ) : (
+        <>
+          <div className='filters'>
+            <Filters name='Genre'></Filters>
+            <Filters name='Type'></Filters>
+            <Filters name='Rating'></Filters>
+          </div>
+          <BsChevronCompactUp
+            color='white'
+            cursor='pointer'
+            size={30}
+            onClick={() => setShow(false)}></BsChevronCompactUp>
+        </>
+      )}
     </div>
   )
 }
@@ -26,6 +44,7 @@ function Service({ service, imgSource }) {
   const numSubscribed = Object.keys(query.subscribedServices).filter(
     (key) => query.subscribedServices[key] === true
   )
+
   function updateServiceList() {
     if (query.subscribedServices[service] && numSubscribed.length === 1) return
     setQuery((old) => ({

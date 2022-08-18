@@ -2,11 +2,10 @@ import { useEffect, useState } from "react"
 
 import axios from "axios"
 function useSearchMovies(searchQuery) {
-  console.log("ttitietel", searchQuery)
   const pageNumber = 1
   const [isLoading, setIsLoading] = useState(true)
   const [movieArray, setMovieArray] = useState([])
-  const services = ["netflix", "prime", "hbo", "hulu"]
+  const services = JSON.stringify(["netflix", "prime", "hbo", "hulu", "disney"])
   useEffect(() => {
     setMovieArray([])
     let cancel
@@ -16,14 +15,14 @@ function useSearchMovies(searchQuery) {
       method: "GET",
       url: `http://localhost:5000/api/movies/search/`,
       params: {
-        service: '["netflix","prime","hbo","hulu"]',
+        service: services,
         page: pageNumber,
-        title: searchQuery
+        title: searchQuery,
+        number: 3
       },
       cancelToken: new axios.CancelToken((c) => (cancel = c))
     })
       .then((res) => {
-        console.log(res.data)
         setMovieArray(res.data)
         setIsLoading(false)
       })

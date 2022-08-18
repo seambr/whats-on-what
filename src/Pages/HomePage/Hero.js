@@ -5,6 +5,7 @@ import "./Hero.css"
 import { useSearch } from "../../Contexts/SearchContext"
 import { ReactComponent as Logo } from "../../Components/Logo.svg"
 import Search from "./Search"
+import ServiceContainer from "./ServiceContainer"
 // import { BsPlayFill } from "react-icons/bs"
 // import { FiSearch } from "react-icons/fi"
 // import { BsInfo } from "react-icons/bs"
@@ -15,11 +16,14 @@ function Hero() {
 
   return (
     <div className='hero'>
-      <Logo
-        style={{
-          width: "100%",
-          paddingTop: "3%"
-        }}></Logo>
+      <div className='hero__logo-container'>
+        <Logo
+          style={{
+            height: "100%",
+            padding: "2%",
+            margin: "0"
+          }}></Logo>
+      </div>
       <Search></Search>
     </div>
   )

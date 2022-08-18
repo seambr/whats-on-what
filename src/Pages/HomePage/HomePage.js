@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import Hero from "./Hero"
 import "./HomePage.css"
 import Grid from "./MovieGrid"
-import NavBar from "./NavBar"
 import Rows from "./Rows"
 import ServiceContainer from "./ServiceContainer"
 import SearchProvider from "../../Contexts/SearchContext"
@@ -20,8 +19,10 @@ function HomePage() {
       <div className='home-page'>
         <SubscriptionContext.Provider
           value={{ subscribedServices, setSubscribedServices }}>
-          <Hero />
-          <ServiceContainer></ServiceContainer>
+          <div className='fixed'>
+            <Hero />
+            <ServiceContainer></ServiceContainer>
+          </div>
           <Grid></Grid>
           {/* <Rows rowCount={2} /> */}
         </SubscriptionContext.Provider>

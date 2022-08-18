@@ -18,7 +18,6 @@ function useMovieData(pageNumber, setPageNumber) {
   useEffect(() => {
     let cancel
     // localhost:3000/api/movies/1?services=["Netflix","Prime"]
-    console.log("FETCHING PAGE", pageNumber)
     setIsLoading(true)
     axios({
       method: "GET",
