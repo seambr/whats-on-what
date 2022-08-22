@@ -7,7 +7,10 @@ import Skeleton from "react-loading-skeleton"
 
 function Grid() {
   const [pageNumber, setPageNumber] = useState(1)
-  const { movieArray, isLoading } = useMovieData(pageNumber, setPageNumber)
+  const { movieArray, isLoading, hasMore } = useMovieData(
+    pageNumber,
+    setPageNumber
+  )
   const observer = useRef()
 
   const lastElementRef = useCallback(
@@ -16,7 +19,7 @@ function Grid() {
       if (observer.current) observer.current.disconnect()
 
       observer.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
+        if (entries[0].isIntersecting && hasMore) {
           setPageNumber((old) => old + 1)
         }
       })
@@ -29,8 +32,6 @@ function Grid() {
   return (
     <div className='grid-container'>
       <div className='movie-grid'>
-        {isLoading && <PosterSkeleton count={20}></PosterSkeleton>}
-
         {movieArray.map((movie, index) => {
           if (index === movieArray.length - 1) {
             return (
@@ -38,12 +39,14 @@ function Grid() {
                 key={index}
                 movie={movie}
                 isLast={true}
-                lastElementRef={lastElementRef}></MoviePoster>
+                lastElementRef={lastElementRef}
+              />
             )
           }
-          return <MoviePoster key={index} movie={movie}></MoviePoster>
+          return <MoviePoster key={index} movie={movie} />
         })}
-        {isLoading && <h1>Loading...</h1>}
+        {isLoading && movieArray.length === 0 && <PosterSkeleton count={20} />}
+        {isLoading && <div className='loader' />}
       </div>
     </div>
   )

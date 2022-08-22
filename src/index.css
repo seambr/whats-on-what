@@ -8,6 +8,8 @@ body {
   overflow-x: hidden;
   overflow-y: scroll;
   height: 100%;
+  height: fit-content;
+  background-color: rgb(21, 21, 21);
 }
 
 code {

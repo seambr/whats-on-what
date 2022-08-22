@@ -11,18 +11,18 @@ function Search() {
   const [search, setSearch] = useState("")
   const debouncedSearch = useDebounce(search, 500)
   const { movieArray, isLoading } = useSearchMovies(debouncedSearch)
-
+  const isOpen = search.length > 0 && !isLoading
   return (
     <div className='search-container'>
       <form action=''>
         <input
           value={search}
           placeholder='Search...'
-          className='movie-search'
+          className={`movie-search ${isOpen ? "open" : ""}`}
           type='text'
           onChange={(e) => setSearch(e.target.value)}
         />
-        {search.length > 0 && !isLoading && (
+        {isOpen && (
           <div className='search-results'>
             {movieArray[0] ? (
               <SearchResult movie={movieArray[0]}></SearchResult>
@@ -33,7 +33,17 @@ function Search() {
             {movieArray[2] ? (
               <SearchResult movie={movieArray[2]}></SearchResult>
             ) : null}
-            {movieArray.length === 0 && <h1>Sorry, Can't Find That</h1>}
+            {movieArray.length === 0 && (
+              <h1
+                style={{
+                  color: "white",
+                  fontSize: "1rem",
+                  fontWeight: "500",
+                  margin: "auto"
+                }}>
+                Sorry, Can't Find That.
+              </h1>
+            )}
           </div>
         )}
       </form>

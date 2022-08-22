@@ -6,6 +6,7 @@ function useSearchMovies(searchQuery) {
   const [isLoading, setIsLoading] = useState(true)
   const [movieArray, setMovieArray] = useState([])
   const services = JSON.stringify(["netflix", "prime", "hbo", "hulu", "disney"])
+
   useEffect(() => {
     setMovieArray([])
     let cancel
@@ -23,7 +24,7 @@ function useSearchMovies(searchQuery) {
       cancelToken: new axios.CancelToken((c) => (cancel = c))
     })
       .then((res) => {
-        setMovieArray(res.data)
+        setMovieArray(res.data.movies)
         setIsLoading(false)
       })
       .catch((err) => {

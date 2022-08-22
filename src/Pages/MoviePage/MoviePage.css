@@ -1,0 +1,21 @@
+.movie-page {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 3%;
+}
+.movie-page__info-container {
+  background-color: rebeccapurple;
+  width: 60%;
+  height: fit-content;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.main-container {
+  flex: 0.3;
+}
+.movie-info {
+  flex: 0.6;
+}

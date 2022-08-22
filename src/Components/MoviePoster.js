@@ -1,7 +1,6 @@
 import React from "react"
 import "./MoviePoster.css"
-
-import { ReactComponent as Banner } from "./Banner.svg"
+import { Link } from "react-router-dom"
 
 function MoviePoster({ movie, isLast, lastElementRef }) {
   function getLogo(availibility) {
@@ -10,19 +9,24 @@ function MoviePoster({ movie, isLast, lastElementRef }) {
 
   if (isLast) {
     return (
-      <div className='movie-card-container' ref={lastElementRef}>
-        <div className='icon'>{getLogo(movie.availibility)}</div>
+      <Link to={`/movie/${movie._id}`}>
+        <div className='movie-card-container' ref={lastElementRef}>
+          <div className='icon'>{getLogo(movie.availibility)}</div>
 
-        <img className='poster' src={movie.posterLink} alt={movie.title} />
-      </div>
+          <img className='poster' src={movie.posterLink} alt={movie.title} />
+        </div>
+      </Link>
     )
   }
 
   return (
-    <div className='movie-card-container'>
-      <div className='icon'>{getLogo(movie.availibility)}</div>
-      <img src={movie.posterLink} alt={movie.title} />
-    </div>
+    <Link to={`/movie/${movie._id}`}>
+      <div className='movie-card-container'>
+        <div className='icon'>{getLogo(movie.availibility)}</div>
+
+        <img src={movie.posterLink} alt={movie.title} />
+      </div>
+    </Link>
   )
 }
 export default MoviePoster
