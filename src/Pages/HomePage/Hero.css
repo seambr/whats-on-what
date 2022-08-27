@@ -74,6 +74,23 @@
   max-height: 100px;
   border-bottom: 2px solid #222;
 }
+.hero-left {
+  display: flex;
+  min-width: fit-content;
+  justify-content: center;
+  align-items: center;
+}
+.watch-list {
+  color: white;
+  width: fit-content;
+  margin-left: 50px;
+  font-size: 13px;
+  font-weight: 400;
+}
+.watch-list:hover {
+  color: #aaa;
+}
+
 .hero__logo-container {
   align-items: center;
   justify-content: center;

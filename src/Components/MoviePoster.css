@@ -1,6 +1,4 @@
 .movie-card-container {
-  border-radius: 5px;
-  overflow: clip;
   width: 100%;
   aspect-ratio: 2/3;
   padding: 0;
@@ -12,7 +10,7 @@
   background-color: #222;
   cursor: pointer;
 }
-.movie-card-container:hover {
+.poster-container:hover {
   transform: scale(1.1);
 }
 .movie-card-container .poster {
@@ -37,4 +35,21 @@
 .icon img {
   height: 100%;
   width: 100%;
+}
+.poster-container {
+  position: relative;
+  border-radius: 5px;
+  overflow: clip;
+}
+.save-to-watchlist {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  margin: 5px;
+  width: fit-content;
+  height: fit-content;
+  z-index: 500;
 }

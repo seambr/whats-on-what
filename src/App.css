@@ -15,3 +15,8 @@ body {
   width: 100%;
   height: fit-content;
 }
+.center {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}

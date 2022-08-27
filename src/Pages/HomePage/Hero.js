@@ -17,11 +17,16 @@ function Hero() {
 
   return (
     <div className='hero'>
-      <Link to='/'>
-        <div className='hero__logo-container'>
-          <img src='./logos/Logo.svg' alt='' />
-        </div>
-      </Link>
+      <div className='hero-left'>
+        <Link to='/'>
+          <div className='hero__logo-container'>
+            <img src='./logos/Logo.svg' alt='' />
+          </div>
+        </Link>
+        <Link to='/watchlist' style={{ textDecoration: "none" }}>
+          <p className='watch-list'>Watch List</p>
+        </Link>
+      </div>
 
       <Search></Search>
     </div>

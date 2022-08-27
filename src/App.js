@@ -4,6 +4,8 @@ import HomePage from "./Pages/HomePage/HomePage"
 import SearchProvider from "./Contexts/SearchContext"
 import Hero from "./Pages/HomePage/Hero"
 import MoviePage from "./Pages/MoviePage/MoviePage"
+import WatchListPage from "./Pages/WatchList/WatchListPage"
+import WatchListProvider from "./Contexts/WatchListContext"
 
 function App() {
   return (
@@ -12,11 +14,13 @@ function App() {
         <div className='fixed'>
           <Hero />
         </div>
-        <Routes>
-          <Route path='/' element={<HomePage />}></Route>
-
-          <Route path='/movie/:id' element={<MoviePage />}></Route>
-        </Routes>
+        <WatchListProvider>
+          <Routes>
+            <Route path='/' element={<HomePage />}></Route>
+            <Route path='/watchlist' element={<WatchListPage />}></Route>
+            <Route path='/movie/:id' element={<MoviePage />}></Route>
+          </Routes>
+        </WatchListProvider>
       </SearchProvider>
     </div>
   )
