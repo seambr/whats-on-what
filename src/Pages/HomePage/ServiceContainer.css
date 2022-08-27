@@ -18,8 +18,8 @@
 }
 .filters {
   display: flex;
-  justify-content: space-evenly;
-  width: 30%;
+  align-items: center;
+  gap: 10px;
 }
 .subscription-logo-container {
   margin: 5px;
