@@ -1,68 +1,7 @@
-/*
-.hero__fade-bottom {
-  width: 100%;
-  height: 500px;
-  position: absolute;
-  background-image: linear-gradient(0deg, #222, transparent);
-  bottom: 0;
-}
-
-.hero__content {
-  color: white;
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  position: absolute;
-  bottom: 20%;
-  margin-left: 2%;
-  z-index: 50;
-}
-.hero__title {
-  font-size: 35px;
-  font-weight: bold;
-}
-.hero__btns {
-  display: flex;
-  position: relative;
-  gap: 20px;
-}
-.hero__btn {
-  overflow: hidden;
-  width: auto;
-  height: 50px;
-  max-width: 50px;
-  border-radius: 500px;
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  transition: max-width 200ms ease-out;
-  gap: 10px;
-}
-
-.hero__btn__icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.hero__btn:hover {
-  max-width: 160px;
-}
-.hero__btn__text {
-  text-overflow: hidden;
-  white-space: nowrap;
-  font-size: 15px;
-  font-weight: bold;
-  padding-right: 15px;
-  color: white;
-}
-.hero__btn:hover .hero__btn__text {
-  display: block;
-  color: white;
-} */
-
-/*  */
 .hero {
   display: flex;
+  position: sticky;
+  top: 0;
   align-items: center;
   z-index: 500;
   justify-content: space-around;

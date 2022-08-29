@@ -1,12 +1,13 @@
 import React, { useState } from "react"
-
+const PREFIX = "whats-on-what"
 function useLocalStorage(key, initialValue) {
+  const prefixedKey = `${PREFIX}-key`
   const [storedValue, setStoredValue] = useState(() => {
     if (typeof window === "undefined") {
       return initialValue
     }
     try {
-      const value = window.localStorage.getItem(key)
+      const value = window.localStorage.getItem(prefixedKey)
       return value ? JSON.parse(value) : initialValue
     } catch (error) {
       console.log(error)
@@ -20,7 +21,7 @@ function useLocalStorage(key, initialValue) {
 
       setStoredValue(value)
       if (typeof window !== "undefined") {
-        window.localStorage.setItem(key, JSON.stringify(toBeStored))
+        window.localStorage.setItem(prefixedKey, JSON.stringify(toBeStored))
       }
     } catch (error) {
       console.log(error)

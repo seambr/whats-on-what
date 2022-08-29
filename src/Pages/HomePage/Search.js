@@ -11,7 +11,7 @@ function Search() {
   const [search, setSearch] = useState("")
   const debouncedSearch = useDebounce(search, 500)
   const { movieArray, isLoading } = useSearchMovies(debouncedSearch)
-  const isOpen = search.length > 0 && !isLoading
+  const isOpen = search.length > 0
   return (
     <div className='search-container'>
       <form action=''>

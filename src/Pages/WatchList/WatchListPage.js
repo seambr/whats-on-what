@@ -13,6 +13,7 @@ function WatchListPage() {
     axios({
       method: "GET",
       url: `http://192.168.1.207:5000/api/movies/id/`,
+      // url: `http://localhost:5000/api/movies/id/`,
       params: {
         idList: JSON.stringify(list)
       },

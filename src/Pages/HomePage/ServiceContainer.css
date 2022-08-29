@@ -27,7 +27,7 @@
   cursor: pointer;
   max-height: 40px;
   max-width: 40px;
-  overflow: clip;
+  overflow: hidden;
 
   border-radius: 10px;
 }

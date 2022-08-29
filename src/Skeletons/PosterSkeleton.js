@@ -14,7 +14,8 @@ function PosterSkeleton({ count }) {
             style={{
               boxShadow: "0 0 10px 2px black",
               aspectRatio: "2/3"
-            }}></Skeleton>
+            }}
+          />
         ))}
     </SkeletonTheme>
   )

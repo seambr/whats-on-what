@@ -2,7 +2,7 @@ import React from "react"
 import "./MoviePoster.css"
 import { Link } from "react-router-dom"
 import { useWatchList } from "../Contexts/WatchListContext"
-import { BsPlusLg, BsXLg } from "react-icons/bs"
+import { AiOutlineStar, AiFillStar } from "react-icons/ai"
 function MoviePoster({ movie, isLast, lastElementRef }) {
   const { list, setList } = useWatchList()
   function getLogo(availibility) {
@@ -16,24 +16,13 @@ function MoviePoster({ movie, isLast, lastElementRef }) {
     return false
   }
 
-  if (isLast) {
-    return (
-      <Link to={`/movie/${movie._id}`}>
-        <div className='movie-card-container' ref={lastElementRef}>
-          <div className='icon'>{getLogo(movie.availibility)}</div>
-          <img className='poster' src={movie.posterLink} alt={movie.title} />
-        </div>
-      </Link>
-    )
-  }
-
   return (
     <div className='poster-container'>
       {!isInWatchList() ? (
         <div
           className='save-to-watchlist'
           onClick={() => setList((oldList) => [...oldList, movie._id])}>
-          <BsPlusLg size={25} color='white' />
+          <AiOutlineStar size={25} color='white' />
         </div>
       ) : (
         <div
@@ -41,16 +30,21 @@ function MoviePoster({ movie, isLast, lastElementRef }) {
           onClick={() =>
             setList((oldList) => oldList.filter((id) => id !== movie._id))
           }>
-          <BsXLg size={25} color='#333' />
+          <AiFillStar size={25} color='gold' />
         </div>
       )}
-
       <Link to={`/movie/${movie._id}`}>
-        <div className='movie-card-container'>
-          <div className='icon'>{getLogo(movie.availibility)}</div>
-
-          <img src={movie.posterLink} alt={movie.title} />
-        </div>
+        {isLast ? (
+          <div className='movie-card-container' ref={lastElementRef}>
+            <div className='icon'>{getLogo(movie.availibility)}</div>
+            <img className='poster' src={movie.posterLink} alt={movie.title} />
+          </div>
+        ) : (
+          <div className='movie-card-container'>
+            <div className='icon'>{getLogo(movie.availibility)}</div>
+            <img className='poster' src={movie.posterLink} alt={movie.title} />
+          </div>
+        )}
       </Link>
     </div>
   )

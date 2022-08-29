@@ -11,9 +11,7 @@ function App() {
   return (
     <div className='app'>
       <SearchProvider>
-        <div className='fixed'>
-          <Hero />
-        </div>
+        <Hero />
         <WatchListProvider>
           <Routes>
             <Route path='/' element={<HomePage />}></Route>
