@@ -16,11 +16,11 @@ function Hero() {
     "https://www.themoviedb.org/t/p/original/ko4N6wWp0UYlMmsVyfIfLyRAZtP.jpg"
 
   return (
-    <div className='hero'>
+    <nav className='hero'>
       <div className='hero-left'>
         <Link to='/'>
           <div className='hero__logo-container'>
-            <img src='./logos/Logo.svg' alt='' />
+            <img src='./logos/Logo2.svg' alt='' />
           </div>
         </Link>
         <Link to='/watchlist' style={{ textDecoration: "none" }}>
@@ -29,7 +29,7 @@ function Hero() {
       </div>
 
       <Search></Search>
-    </div>
+    </nav>
   )
 }
 

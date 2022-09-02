@@ -58,3 +58,9 @@
   height: fit-content;
   z-index: 500;
 }
+
+@media (hover: none) {
+  .poster-container:hover {
+    transform: scale(1);
+  }
+}

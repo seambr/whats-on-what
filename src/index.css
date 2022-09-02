@@ -12,7 +12,7 @@ body {
   /* background-color: rgb(21, 21, 21); */
 
   background-image: url(./Components/backdrop1.svg);
-  background-size: 40%;
+  background-size: 20%;
   background-repeat: round;
   background-blend-mode: soft-light;
   background-attachment: fixed;

@@ -10,15 +10,23 @@
   border-radius: 0.25em;
   box-shadow: 0 0 10px 7px rgba(0, 0, 0, 0.846);
   padding: 10px;
-  width: 60%;
+  width: 80%;
   height: fit-content;
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: stretch;
 }
 .main-container {
   flex: 0.3;
+
+  flex-shrink: 0;
 }
 .movie-info {
   flex: 0.6;
+}
+
+@media all and (max-width: 600px) {
+  .movie-page__info-container {
+    flex-direction: column;
+  }
 }
