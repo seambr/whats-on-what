@@ -1,27 +1,36 @@
+/* * {
+  outline: 1px solid limegreen;
+} */
 .hero {
   display: flex;
   position: sticky;
+  width: 100%;
   top: 0;
   align-items: center;
   z-index: 500;
   justify-content: space-around;
-  gap: 40%;
-  background-color: rgb(55, 166, 203);
-  background-color: rgb(21, 21, 21);
+  gap: 20%;
+
   flex: 0.5 0.5 0.5;
   min-height: fit-content;
   max-height: 100px;
-  border-bottom: 3px solid #333;
-  /* box-shadow: 0 0 7px 7px black; */
+  background-color: #0c0b12;
 }
 .hero-left {
   display: flex;
   min-width: fit-content;
   width: 350px;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 }
+.hero-menu {
+  display: flex;
+}
 .watch-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
   color: rgb(255, 255, 255);
   width: fit-content;
   margin-left: 50px;

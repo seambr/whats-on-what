@@ -8,14 +8,12 @@ body {
   overflow-x: hidden;
   overflow-y: scroll;
   height: 100%;
-  height: fit-content;
-  /* background-color: rgb(21, 21, 21); */
 
-  background-image: url(./Components/backdrop1.svg);
-  background-size: 20%;
+  /* background-image: url(./Components/backdrop1.svg);
+  background-size: 50%;
   background-repeat: round;
-  background-blend-mode: soft-light;
   background-attachment: fixed;
+  background-blend-mode: luminosity; */
 }
 
 code {

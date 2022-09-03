@@ -11,6 +11,12 @@ body {
   height: 100%;
   background-color: rgb(12, 11, 18);
 }
+.blur {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(4px);
+}
 .app {
   width: 100%;
   position: relative;

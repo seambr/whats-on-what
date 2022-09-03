@@ -7,7 +7,7 @@ import { useSearch } from "../../Contexts/SearchContext"
 import Search from "./Search"
 import ServiceContainer from "./ServiceContainer"
 import { Link } from "react-router-dom"
-// import { BsPlayFill } from "react-icons/bs"
+import { AiOutlineStar, AiFillStar } from "react-icons/ai"
 // import { FiSearch } from "react-icons/fi"
 // import { BsInfo } from "react-icons/bs"
 
@@ -20,12 +20,20 @@ function Hero() {
       <div className='hero-left'>
         <Link to='/'>
           <div className='hero__logo-container'>
-            <img src='./logos/Logo2.svg' alt='' />
+            <img src='./logos/Logo7.svg' alt='' />
           </div>
         </Link>
-        <Link to='/watchlist' style={{ textDecoration: "none" }}>
-          <p className='watch-list'>Watch List</p>
-        </Link>
+        <div className='hero-menu'>
+          <Link to='/watchlist' style={{ textDecoration: "none" }}>
+            <span className='watch-list'>Watch List</span>
+          </Link>
+          <Link to='/movies' style={{ textDecoration: "none" }}>
+            <span className='watch-list'>Movies</span>
+          </Link>
+          <Link to='/series' style={{ textDecoration: "none" }}>
+            <span className='watch-list'>Series</span>
+          </Link>
+        </div>
       </div>
 
       <Search></Search>

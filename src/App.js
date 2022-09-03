@@ -9,18 +9,21 @@ import WatchListProvider from "./Contexts/WatchListContext"
 
 function App() {
   return (
-    <div className='app'>
-      <SearchProvider>
-        <Hero />
-        <WatchListProvider>
-          <Routes>
-            <Route path='/' element={<HomePage />}></Route>
-            <Route path='/watchlist' element={<WatchListPage />}></Route>
-            <Route path='/movie/:id' element={<MoviePage />}></Route>
-          </Routes>
-        </WatchListProvider>
-      </SearchProvider>
-    </div>
+    <>
+      <div className='blur' />
+      <div className='app'>
+        <SearchProvider>
+          <Hero />
+          <WatchListProvider>
+            <Routes>
+              <Route path='/' element={<HomePage />}></Route>
+              <Route path='/watchlist' element={<WatchListPage />}></Route>
+              <Route path='/movie/:id' element={<MoviePage />}></Route>
+            </Routes>
+          </WatchListProvider>
+        </SearchProvider>
+      </div>
+    </>
   )
 }
 
