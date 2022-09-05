@@ -4,6 +4,7 @@ import { useSearch } from "../../Contexts/SearchContext.js"
 import { BsChevronCompactDown, BsChevronCompactUp } from "react-icons/bs"
 function ServiceContainer() {
   const [show, setShow] = useState(false)
+  const { query, setQuery } = useSearch()
   const services = ["netflix", "prime", "hbo", "hulu", "disney"]
   return (
     <div className='subscription-container'>
@@ -24,9 +25,23 @@ function ServiceContainer() {
       ) : (
         <>
           <div className='filters'>
-            <Filters name='Genre'></Filters>
-            <Filters name='Type'></Filters>
-            <Filters name='Rating'></Filters>
+            <Filter
+              name='Genre'
+              value={query.genre}
+              onChange={(e) =>
+                setQuery((old) => ({ ...old, genre: e.target.value }))
+              }
+              options={["action", "adventure", "animation"]}
+            />
+            <Filter
+              name='Type'
+              value={query.type}
+              onChange={(e) =>
+                setQuery((old) => ({ ...old, type: e.target.value }))
+              }
+              options={["all", "movie", "series"]}
+            />
+            {/* <Filter name='Rating' value={query.genre} onChange={(e)=>setQuery(old=>({...old,genre:e.target.value}))}></Filter> */}
           </div>
           <BsChevronCompactUp
             color='white'
@@ -67,16 +82,16 @@ function Service({ service, imgSource }) {
   )
 }
 
-function Filters({ name }) {
+function Filter({ name, value, onChange, options }) {
   return (
     <div className='filters-container'>
-      <select className='filter-button'>
+      <select className='filter-button' value={value} onChange={onChange}>
         <option selected disabled hidden>
           {name}
         </option>
-        <option value='action'>Action</option>
-        <option value='action'>Fantasy</option>
-        <option value='action'>Sci-Fi</option>
+        {options.map((option) => (
+          <option value={option}>{option.toUpperCase()}</option>
+        ))}
       </select>
     </div>
   )

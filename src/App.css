@@ -9,7 +9,7 @@ html {
 }
 body {
   height: 100%;
-  background-color: rgb(12, 11, 18);
+  background-color: #0c0b12;
 }
 .blur {
   position: fixed;

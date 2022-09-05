@@ -19,7 +19,7 @@
 .hero-left {
   display: flex;
   min-width: fit-content;
-  width: 350px;
+
   justify-content: space-evenly;
   align-items: center;
 }
@@ -58,6 +58,26 @@
 /*  */
 
 @media all and (max-width: 1000px) {
+  /* * {
+    outline: 1px solid limegreen;
+  } */
+  .hero {
+    gap: 0;
+
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 5px;
+    max-height: 200px;
+    flex: 0.5 0.5 0;
+  }
+  .hero__logo-container {
+    width: 40%;
+  }
+  .hero-menu {
+    display: none;
+  }
+}
+@media all and (max-width: 600px) {
   .hero {
     gap: 0;
     flex-direction: column;
@@ -69,5 +89,8 @@
   }
   .hero__logo-container {
     width: 40%;
+  }
+  .hero-menu {
+    display: none;
   }
 }
