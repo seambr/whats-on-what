@@ -39,7 +39,7 @@ function ServiceContainer() {
               onChange={(e) =>
                 setQuery((old) => ({ ...old, type: e.target.value }))
               }
-              options={["all", "movie", "series"]}
+              options={["all", "movie", "tv"]}
             />
             {/* <Filter name='Rating' value={query.genre} onChange={(e)=>setQuery(old=>({...old,genre:e.target.value}))}></Filter> */}
           </div>
@@ -85,7 +85,7 @@ function Service({ service, imgSource }) {
 function Filter({ name, value, onChange, options }) {
   return (
     <div className='filters-container'>
-      <select className='filter-button' value={value} onChange={onChange}>
+      <select className='filter-select' value={value} onChange={onChange}>
         <option selected disabled hidden>
           {name}
         </option>

@@ -10,12 +10,11 @@ function useSearchMovies(searchQuery) {
   useEffect(() => {
     setMovieArray([])
     let cancel
-    // localhost:3000/api/movies/1?services=["netflix","prime"]
     setIsLoading(true)
     axios({
       method: "GET",
-      url: `http://192.168.1.207:5000/api/movies/search/`,
-      // url: `http://localhost:5000/api/movies/search/`,
+      // url: `http://192.168.1.207:5000/api/movies/search/`,
+      url: `http://localhost:5000/api/movies/search/`,
       params: {
         service: services,
         page: pageNumber,

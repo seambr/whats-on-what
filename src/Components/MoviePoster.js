@@ -6,7 +6,14 @@ import { AiOutlineStar, AiFillStar } from "react-icons/ai"
 function MoviePoster({ movie, isLast, lastElementRef }) {
   const { list, setList } = useWatchList()
   function getLogo(availibility) {
-    return <img src={`../logos/${availibility}-icon.png`}></img>
+    return (
+      <>
+        <img src={`../logos/${availibility[0]}-icon.png`} />
+        {availibility[1] && (
+          <img src={`../logos/${availibility[1]}-icon.png`} />
+        )}
+      </>
+    )
   }
 
   function isInWatchList() {

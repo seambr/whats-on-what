@@ -15,7 +15,9 @@ function SearchResult({ movie }) {
         <SkeletonTheme baseColor='#111' highlightColor='#333'>
           <Skeleton count={2}></Skeleton>
         </SkeletonTheme>
-        <p style={{ color: "violet" }}>{movie.availibility.toUpperCase()}</p>
+        <p style={{ color: "violet" }}>
+          {movie.availibility.map((e) => e.toUpperCase() + "\n")}
+        </p>
       </div>
     </div>
   )
