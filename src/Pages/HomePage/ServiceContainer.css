@@ -6,8 +6,8 @@
   flex: 0.5 0.5 0;
   padding-bottom: 5px;
   padding-top: 10px;
-  background-color: rgb(8, 9, 11);
-  box-shadow: inset 0px 3px 8px 6px rgba(0, 0, 0, 0.573);
+  background-color: rgba(8, 8, 8, 0.498);
+  box-shadow: inset 0px 0px 5px 5px rgba(6, 6, 6, 0.984);
 }
 .services {
   display: flex;

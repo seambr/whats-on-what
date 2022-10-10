@@ -25,7 +25,7 @@ function useMovieData(pageNumber, setPageNumber) {
     axios({
       method: "GET",
       // url: `http://localhost:5000/api/movies/search/`,
-      url: `http://localhost:5000/api/movies/search/`,
+      url: `http://localhost:5000/api/movies/items/`,
       params: {
         service: services,
         page: pageNumber,
