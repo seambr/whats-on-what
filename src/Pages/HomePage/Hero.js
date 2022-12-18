@@ -12,33 +12,27 @@ import { AiOutlineStar, AiFillStar } from "react-icons/ai"
 // import { BsInfo } from "react-icons/bs"
 
 function Hero() {
-  const backdropPath =
-    "https://www.themoviedb.org/t/p/original/ko4N6wWp0UYlMmsVyfIfLyRAZtP.jpg"
+	const backdropPath =
+		"https://www.themoviedb.org/t/p/original/ko4N6wWp0UYlMmsVyfIfLyRAZtP.jpg"
 
-  return (
-    <nav className='hero'>
-      <div className='hero-left'>
-        <Link to='/'>
-          <div className='hero__logo-container'>
-            <img src='./logos/Logo7.svg' alt='' />
-          </div>
-        </Link>
-        <div className='hero-menu'>
-          <Link to='/watchlist' style={{ textDecoration: "none" }}>
-            <span className='watch-list'>Watch List</span>
-          </Link>
-          <Link to='/movies' style={{ textDecoration: "none" }}>
-            <span className='watch-list'>Movies</span>
-          </Link>
-          <Link to='/series' style={{ textDecoration: "none" }}>
-            <span className='watch-list'>Series</span>
-          </Link>
-        </div>
-      </div>
+	return (
+		<nav className="hero">
+			<div className="hero-left">
+				<Link to="/">
+					<div className="hero__logo-container">
+						<img src="./logos/Logo7.svg" alt="" />
+					</div>
+				</Link>
+				<div className="hero-menu">
+					<Link to="/watchlist" style={{ textDecoration: "none" }}>
+						<span className="watch-list">Watch List</span>
+					</Link>
+				</div>
+			</div>
 
-      <Search></Search>
-    </nav>
-  )
+			<Search></Search>
+		</nav>
+	)
 }
 
 export default Hero

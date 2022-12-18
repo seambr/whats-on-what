@@ -1,43 +1,73 @@
 import React from "react"
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
+import { SkeletonTheme } from "react-loading-skeleton"
 import { useLocation, useParams } from "react-router-dom"
+import LargeButton from "../../Components/LargeButton"
 import MoviePoster from "../../Components/MoviePoster"
-import PosterSkeleton from "../../Skeletons/PosterSkeleton"
-
+import MovieRating from "../../Components/MovieRating"
+import RatingStars from "../../Components/RatingStars"
 import "./MoviePage.css"
+const tagStyle = {
+	color: "#fefbea",
+	marginTop: 0,
+	fontWeight: "normal",
+	fontSize: "12px",
+	paddingLeft: "2em",
+}
+const titleStyle = {
+	color: "white",
+	fontSize: "2em",
+	marginBottom: 0,
+	marginTop: 0,
+}
+const summaryStyle = {
+	color: "white",
+	marginTop: "1em",
+	fontWeight: "normal",
+	fontSize: "16px",
+}
 function MoviePage() {
-  const params = useParams()
-  const location = useLocation()
-  const { movie } = location.state
-  return (
-    <div className='movie-page'>
-      <SkeletonTheme baseColor='rgb(50,50,50)' highlightColor='rgb(60,60,60)'>
-        <div className='movie-page__info-container'>
-          <div className='main-container'>
-            <MoviePoster movie={movie} />
-          </div>
-          <div className='movie-info'>
-            <h1 style={{ color: "white", fontWeight: "400", margin: "0" }}>
-              {movie.title}
-            </h1>
-            <h4 style={{ color: "white", fontWeight: "300", margin: "0" }}>
-              Rating: {movie.rating}
-            </h4>
-            <p style={{ color: "#ddd" }}>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Obcaecati quisquam minima dignissimos tenetur repudiandae corrupti
-              alias eveniet iure consequatur a soluta eos quasi, natus dicta
-              sint doloremque culpa sunt totam, qui aperiam debitis architecto!
-              Magni rerum commodi at fugiat debitis laboriosam alias adipisci
-              velit eaque ipsam rem delectus suscipit nam, tempore repellat,
-              accusantium hic ut officia odio sed quidem. Dolorem excepturi
-              reprehenderit rem aliquam, enim nobis tenetur quaerat ut expedita?
-            </p>
-          </div>
-        </div>
-      </SkeletonTheme>
-    </div>
-  )
+	const params = useParams()
+	const location = useLocation()
+	const { movie } = location.state
+	console.log(movie)
+	return (
+		<main className="movie-page">
+			<section className="movie-info">
+				<div className="darken" />
+				<img
+					id="movie-page-backdrop"
+					src={movie.backdropLink}
+					alt={`Movie backdrop for ${movie.title}`}
+				/>
+				<div className="movie-page-contents">
+					<img
+						id="movie-page-poster"
+						src={movie.posterLink.replace("w220_and_h330_face", "original")}
+						alt={`Movie poster for ${movie.title}`}
+					/>
+					<div className="movie-page-text">
+						<div className="row-flex">
+							<h1 style={titleStyle}>{movie.title}</h1>
+							<MovieRating rating={movie.rating} />
+						</div>
+						<div className="row-flex">
+							<span
+								style={{ paddingLeft: "2em", color: "#aaa", fontSize: "0.8em" }}
+							>
+								{movie.runtime}
+							</span>
+							<RatingStars rating={movie.score} color="black" />
+						</div>
+						{movie.tagline !== "false" && (
+							<h5 style={tagStyle}>"{movie.tagline}"</h5>
+						)}
+						<p style={summaryStyle}>{movie.summary}</p>
+						<LargeButton />
+					</div>
+				</div>
+			</section>
+		</main>
+	)
 }
 
 export default MoviePage

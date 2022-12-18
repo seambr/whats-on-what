@@ -1,0 +1,18 @@
+.btn-large{
+    user-select: none;
+    background-color: rgba(255, 255, 255, 0.275);
+    width: fit-content;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 7px 3px 7px 3px;
+    color: white;
+    font-size: 0.8em;
+}
+
+.btn-large:hover{
+    background-color: rgba(204, 204, 204, 0.64);
+}
+
+.btn-large:active{
+    background-color: rgba(170, 170, 170, 0.624);
+}
