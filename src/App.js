@@ -8,6 +8,7 @@ import WatchListPage from "./Pages/WatchList/WatchListPage"
 import WatchListProvider from "./Contexts/WatchListContext"
 
 function App() {
+
   return (
     <>
       <div className='blur' />
@@ -17,8 +18,8 @@ function App() {
           <WatchListProvider>
             <Routes>
               <Route path='/' element={<HomePage />}></Route>
-              <Route path='/watchlist' element={<WatchListPage />}></Route>
-              <Route path='/movie/:id' element={<MoviePage />}></Route>
+              <Route path='/watchlist' element={<WatchListPage /> }></Route>
+              <Route path='/movie/:id' element={<MoviePage/>}></Route>
             </Routes>
           </WatchListProvider>
         </SearchProvider>

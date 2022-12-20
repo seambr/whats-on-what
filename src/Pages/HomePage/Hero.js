@@ -7,20 +7,15 @@ import { useSearch } from "../../Contexts/SearchContext"
 import Search from "./Search"
 import ServiceContainer from "./ServiceContainer"
 import { Link } from "react-router-dom"
-import { AiOutlineStar, AiFillStar } from "react-icons/ai"
-// import { FiSearch } from "react-icons/fi"
-// import { BsInfo } from "react-icons/bs"
 
 function Hero() {
-	const backdropPath =
-		"https://www.themoviedb.org/t/p/original/ko4N6wWp0UYlMmsVyfIfLyRAZtP.jpg"
 
 	return (
 		<nav className="hero">
 			<div className="hero-left">
 				<Link to="/">
 					<div className="hero__logo-container">
-						<img src="./logos/Logo7.svg" alt="" />
+						<img src="../logos/whats-on-what-logo.svg" alt="What's On What" />
 					</div>
 				</Link>
 				<div className="hero-menu">

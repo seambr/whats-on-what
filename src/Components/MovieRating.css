@@ -1,12 +1,17 @@
 .movie-rating{
+  user-select: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid rgb(228, 225, 225);
+    border: 2px solid #ddd;
     color: white;
     height: 1.1em;
-    min-width: 1.1em;
+    
     padding: 0.1em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    min-width: max(fit-content,1.2em);
     width: fit-content;
     font-size: xx-large;
+    font-size: 25px;
   }

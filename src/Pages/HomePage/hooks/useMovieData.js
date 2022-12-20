@@ -12,6 +12,10 @@ function useMovieData(pageNumber, setPageNumber) {
 			s => query.subscribedServices[s]
 		)
 	)
+	const genreList = JSON.stringify(
+		Object.keys(query.genreList).filter(g => query.genreList[g])
+	)
+
 	useEffect(() => {
 		setMovieArray([])
 		setPageNumber(1)
@@ -24,13 +28,12 @@ function useMovieData(pageNumber, setPageNumber) {
 
 		axios({
 			method: "GET",
-			// url: `http://localhost:5000/api/movies/search/`,
 			url: `http://localhost:5000/api/movies/items/`,
 			params: {
 				service: services,
 				page: pageNumber,
 				title: query.title,
-				genre: query.genre,
+				genreList: genreList,
 				type: query.type,
 			},
 			cancelToken: new axios.CancelToken(c => (cancel = c)),

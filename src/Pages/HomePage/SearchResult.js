@@ -19,7 +19,7 @@ function SearchResult({ movie }) {
 			</div>
 
 			<div className="details">
-				<p>{movie.title}</p>
+				<p style={{lineHeight:1, marginBottom:"1em"}}>{movie.title}</p>
 				<p style={{ color: "white", fontSize: "12px", lineHeight: "1" }}>
 					{truncateString(movie.summary, 60)}
 				</p>

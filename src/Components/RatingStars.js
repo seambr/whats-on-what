@@ -3,7 +3,6 @@ import "./RatingStars.css"
 import { AiFillStar, AiOutlineStar } from "react-icons/ai"
 import { useMemo } from "react"
 function RatingStars({ rating, color }) {
-	console.log(rating)
 	function getStars(rating) {
 		const fiveRating = Math.round((rating / 100) * 5)
 		const arr = []
@@ -21,11 +20,11 @@ function RatingStars({ rating, color }) {
 
 	return (
 		<div style={{ display: "flex", alignItems: "center" }}>
-			{starArray.map(e => {
+			{starArray.map((e,i) => {
 				if (e === 1) {
-					return <AiFillStar color={color} />
+					return <AiFillStar color={color} key={i}/>
 				} else {
-					return <AiOutlineStar color={color} />
+					return <AiOutlineStar color={color} key ={i}/>
 				}
 			})}
 		</div>

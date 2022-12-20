@@ -9,7 +9,7 @@
   position: relative;
   width: 100%;
   height: 100%;
-  overflow: clip;
+  overflow: hidden;
   z-index: inherit;
   /* border-bottom: 3px solid rgb(7, 135, 255); */
 }
@@ -29,13 +29,14 @@
   filter: blur(10px);
   z-index: 2;
   object-fit: cover;
+
 }
 .movie-page-contents{
   width: 100%;
   height: 60%;
   position: absolute;
   z-index: 4;
-
+  margin: 2em;
   display: flex;
   align-items: center;
 
@@ -63,7 +64,7 @@
 }
 .row-flex{
   display: flex;
-
+  
   flex-direction: row;
   align-items: center;
   gap: 1.5em;
@@ -73,6 +74,8 @@
   .movie-page-contents {
     flex-direction: column;
     width: 100%;
+    margin: 0;
+    align-items: center;
   }
   .movie-page-text{
     margin-top: 1em;

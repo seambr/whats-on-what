@@ -19,9 +19,12 @@
   margin-bottom: 5px;
 }
 .filters {
-  display: flex;
+  display: grid;
+  
   align-items: center;
   gap: 10px;
+  grid-template-rows: repeat(3,auto);
+  grid-template-columns: repeat(9,auto);
 }
 
 .filter-select {
