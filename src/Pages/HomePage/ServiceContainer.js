@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react"
-import { SubscriptionContext } from "./HomePage.js"
+import { BsBookmarksFill } from "react-icons/bs"
 import { useSearch } from "../../Contexts/SearchContext.js"
-import { BsChevronCompactDown, BsChevronCompactUp } from "react-icons/bs"
+
 import GenreTag from "../../Components/GenreTag.js"
 import FiltersButton from "./FiltersButton.js"
+import { Link } from "react-router-dom"
 function ServiceContainer() {
 	// ideally these serevices/genres wouldnt be hard coded, but i dont plan on expanding
 	const genreList = [
@@ -42,6 +43,9 @@ function ServiceContainer() {
 				))}
 			</div>
 			<div className="divider" />
+			<Link to="/watchlist">
+				<BsBookmarksFill className="left-icon" size={30} />
+			</Link>
 			<FiltersButton />
 		</div>
 	)

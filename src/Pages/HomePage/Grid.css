@@ -6,15 +6,15 @@
   flex-direction: column;
   height: 100%;
   margin-left: 100px;
-  
+
 
 }
 .movie-grid {
   overflow: visible;
   margin: auto;
-  margin-top: 50px;
+  margin-top: 4vh;
   display: grid;
-  width: 75%;
+  width: 70%;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 20px;
   row-gap: 4vh;

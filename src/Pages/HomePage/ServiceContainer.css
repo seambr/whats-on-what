@@ -11,7 +11,7 @@
   flex-direction: column;
   height: 100%;
   border-right: 2px solid var(--light);
-  width: clamp(100px,5vw,500px);
+  width: clamp(100px,2vw,500px);
   background-color: var(--dark);
 }
 
@@ -19,9 +19,11 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding-top: 100px;
+  padding: 0.1vw;
+  padding-top: 60px;
   padding-bottom: 20%;
-  width: clamp(70px,3vw,500px);
+  width: clamp(60px,2vw,500px);
+
 }
 
 .divider{
@@ -30,6 +32,7 @@
   height: 3px;
   background-color: var(--light);
   border-radius: 50px;
+  padding: 0.1vw;
 }
 
 
@@ -95,3 +98,12 @@
   font-size: 0.75rem;
 }
 
+
+.left-icon{
+  cursor: pointer;
+  margin-top: 20px;
+  fill: white;
+}
+.left-icon:hover{
+  fill: rgb(181, 181, 181);
+ }

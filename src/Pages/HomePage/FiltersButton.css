@@ -9,7 +9,8 @@
     position: absolute;
     bottom: 0;
     margin-bottom: 25px;
-    width: clamp(1vw,2vw,500px);
+    width: clamp(30px,1vw,500px);
+    padding: 0.1vw;
 }
   #filters img {
     width: 100%;
