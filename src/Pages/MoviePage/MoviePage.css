@@ -9,7 +9,6 @@
   position: relative;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   z-index: inherit;
   /* border-bottom: 3px solid rgb(7, 135, 255); */
 }
@@ -29,6 +28,8 @@
   filter: blur(10px);
   z-index: 2;
   object-fit: cover;
+  overflow: hidden;
+  height: 100%;
 
 }
 .movie-page-contents{
@@ -39,7 +40,6 @@
   margin: 2em;
   display: flex;
   align-items: center;
-
   padding: 2em;
 
 
@@ -69,17 +69,33 @@
   align-items: center;
   gap: 1.5em;
 }
-
+.runtime-rating{
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
 @media all and (max-width: 600px) {
   .movie-page-contents {
     flex-direction: column;
     width: 100%;
     margin: 0;
     align-items: center;
+
   }
   .movie-page-text{
     margin-top: 1em;
     padding:0;
+    align-items: center;
   }
-
+  .runtime-rating{
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    flex-direction: column-reverse;
+    order:0;
+    margin-top: 0.5em;
+  }
+  .summary{
+    order: 0;
+  }
 }

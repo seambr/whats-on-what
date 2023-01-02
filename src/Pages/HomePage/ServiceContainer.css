@@ -1,5 +1,47 @@
+
+
+.left-bar{
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-right: 2px solid var(--light);
+  width: clamp(100px,5vw,500px);
+  background-color: var(--dark);
+}
+
+.services{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 100px;
+  padding-bottom: 20%;
+  width: clamp(70px,3vw,500px);
+}
+
+.divider{
+  width: 70px;
+  max-width: 70px;
+  height: 3px;
+  background-color: var(--light);
+  border-radius: 50px;
+}
+
+
+
+
+
+
+
+
+
+
 .subscription-container {
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,24 +49,38 @@
   padding-bottom: 5px;
   padding-top: 10px;
   background-color: rgba(0, 0, 0, 0);
-
-
-  
+  width: clamp(100px,5vw,500px);
 }
-.services {
+.subscription-logo-container {
+  margin: 5px;
   display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 70%;
-  margin-bottom: 5px;
+  cursor: pointer;
+  max-height: clamp(100px,5vw,500px);
+  max-width: clamp(100px,5vw,500px);
+  overflow: hidden;
+
+  border-radius: 100%;
 }
+.subscription-logo-container img {
+  width: 100%;
+  object-fit: contain;
+  filter: grayscale();
+  color: white;
+  font-size: 2rem;
+}
+.subscription-logo-container img.selected {
+  filter: none;
+}
+
 .filters {
+  margin-top: 1em;
+  width: 100%;
   display: grid;
-  
+  justify-content: center;
   align-items: center;
   gap: 10px;
   grid-template-rows: repeat(3,auto);
-  grid-template-columns: repeat(9,auto);
+  grid-template-columns: repeat(10,auto);
 }
 
 .filter-select {
@@ -38,23 +94,4 @@
   justify-content: center;
   font-size: 0.75rem;
 }
-.subscription-logo-container {
-  margin: 5px;
-  display: flex;
-  cursor: pointer;
-  max-height: 40px;
-  max-width: 40px;
-  overflow: hidden;
 
-  border-radius: 10px;
-}
-.subscription-logo-container img {
-  width: 100%;
-  object-fit: contain;
-  filter: grayscale();
-  color: white;
-  font-size: 2rem;
-}
-.subscription-logo-container img.selected {
-  filter: none;
-}

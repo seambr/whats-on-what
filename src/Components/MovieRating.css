@@ -10,8 +10,28 @@
     padding: 0.1em;
     padding-top: 0.2em;
     padding-bottom: 0.2em;
-    min-width: max(fit-content,1.2em);
+    min-width: fit-content;
     width: fit-content;
     font-size: xx-large;
     font-size: 25px;
+  }
+
+
+  .title-rating{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+
+  }
+
+
+  @media all and (max-width: 600px) {
+    .title-rating{
+      flex-direction: column;
+      order: 0;
+      align-items: center;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
   }

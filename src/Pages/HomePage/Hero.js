@@ -2,14 +2,12 @@ import React from "react"
 // import CustomButton from "../../Components/CustomButton"
 import "./ServiceContainer.css"
 import "./Hero.css"
-import { useSearch } from "../../Contexts/SearchContext"
 
 import Search from "./Search"
-import ServiceContainer from "./ServiceContainer"
+
 import { Link } from "react-router-dom"
 
 function Hero() {
-
 	return (
 		<nav className="hero">
 			<div className="hero-left">
@@ -18,14 +16,9 @@ function Hero() {
 						<img src="../logos/whats-on-what-logo.svg" alt="What's On What" />
 					</div>
 				</Link>
-				<div className="hero-menu">
-					<Link to="/watchlist" style={{ textDecoration: "none" }}>
-						<span className="watch-list">Watch List</span>
-					</Link>
-				</div>
 			</div>
 
-			<Search></Search>
+			<Search />
 		</nav>
 	)
 }

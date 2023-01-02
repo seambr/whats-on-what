@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useSearch } from "../../../Contexts/SearchContext.js"
-
+import { apiURL } from "../../../apiURL.js"
 import axios from "axios"
 function useMovieData(pageNumber, setPageNumber) {
 	const { query } = useSearch()
@@ -23,12 +23,11 @@ function useMovieData(pageNumber, setPageNumber) {
 
 	useEffect(() => {
 		let cancel
-		// localhost:3000/api/movies/1?services=["Netflix","Prime"]
 		setIsLoading(true)
 
 		axios({
 			method: "GET",
-			url: `http://localhost:5000/api/movies/items/`,
+			url: `http://${apiURL}:5000/api/movies/items/`,
 			params: {
 				service: services,
 				page: pageNumber,

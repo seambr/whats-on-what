@@ -18,3 +18,7 @@ html {
   width: 100%;
   position: relative;
 }
+
+img{
+  pointer-events: none;
+}

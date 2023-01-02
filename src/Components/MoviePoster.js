@@ -15,7 +15,12 @@ function MoviePoster({ movie, isLast, lastElementRef, showAvailibility }) {
 						<div className="icon">
 							<ServiceAvailibilityLogos availibility={movie.availibility} />
 						</div>
-						<img className="poster" src={movie.posterLink} alt={movie.title} />
+						<img
+							className="poster"
+							src={movie.posterLink}
+							alt={movie.title}
+							draggable={false}
+						/>
 					</div>
 				) : (
 					<div className="movie-card-container">
@@ -24,7 +29,12 @@ function MoviePoster({ movie, isLast, lastElementRef, showAvailibility }) {
 								<ServiceAvailibilityLogos availibility={movie.availibility} />
 							</div>
 						)}
-						<img className="poster" src={movie.posterLink} alt={movie.title} />
+						<img
+							className="poster"
+							src={movie.posterLink}
+							alt={movie.title}
+							draggable={false}
+						/>
 					</div>
 				)}
 			</Link>

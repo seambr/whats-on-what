@@ -29,6 +29,7 @@ function GenreTag({
 					color: toggled ? "black" : "white",
 					fontSize: fontSize,
 					cursor: "pointer",
+					justifySelf: "center",
 				}}
 				onClick={toggleGenreFilter}
 			>

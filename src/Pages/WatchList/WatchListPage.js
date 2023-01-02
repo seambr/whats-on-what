@@ -3,6 +3,7 @@ import MoviePoster from "../../Components/MoviePoster"
 import { useWatchList } from "../../Contexts/WatchListContext"
 import axios from "axios"
 import "./WatchListPage.css"
+import { apiURL } from "../../apiURL"
 function WatchListPage() {
 	const { list } = useWatchList()
 	const [movieArray, setMovieArray] = useState([])
@@ -12,8 +13,7 @@ function WatchListPage() {
 		console.log("calling with", list)
 		axios({
 			method: "GET",
-			// url: `http://192.168.1.207:5000/api/movies/id/`,
-			url: `http://localhost:5000/api/movies/id/`,
+			url: `http://${apiURL}:5000/api/movies/id/`,
 			params: {
 				idList: JSON.stringify(list),
 			},

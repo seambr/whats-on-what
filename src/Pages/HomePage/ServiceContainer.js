@@ -3,6 +3,7 @@ import { SubscriptionContext } from "./HomePage.js"
 import { useSearch } from "../../Contexts/SearchContext.js"
 import { BsChevronCompactDown, BsChevronCompactUp } from "react-icons/bs"
 import GenreTag from "../../Components/GenreTag.js"
+import FiltersButton from "./FiltersButton.js"
 function ServiceContainer() {
 	// ideally these serevices/genres wouldnt be hard coded, but i dont plan on expanding
 	const genreList = [
@@ -30,39 +31,18 @@ function ServiceContainer() {
 	const [show, setShow] = useState(false)
 
 	return (
-		<div className="subscription-container">
+		<div className="left-bar">
 			<div className="services">
 				{services.map((s, i) => (
 					<Service
 						key={i}
 						service={s}
-						imgSource={`../logos/${s}-icon.png`}
+						imgSource={`../logos/${s}-icon.svg`}
 					></Service>
 				))}
 			</div>
-			{!show ? (
-				<BsChevronCompactDown
-					color="white"
-					cursor="pointer"
-					size={30}
-					onClick={() => setShow(true)}
-				></BsChevronCompactDown>
-			) : (
-				<>
-					<div className="filters">
-						{genreList.map(e => (
-							<GenreTag text={e} fontSize="12px" clickable />
-						))}
-						{/* <Filter name='Rating' value={query.genre} onChange={(e)=>setQuery(old=>({...old,genre:e.target.value}))}></Filter> */}
-					</div>
-					<BsChevronCompactUp
-						color="white"
-						cursor="pointer"
-						size={30}
-						onClick={() => setShow(false)}
-					></BsChevronCompactUp>
-				</>
-			)}
+			<div className="divider" />
+			<FiltersButton />
 		</div>
 	)
 }

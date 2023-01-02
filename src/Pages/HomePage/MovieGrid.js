@@ -45,8 +45,8 @@ function Grid() {
 					return <MoviePoster key={index} movie={movie} showAvailibility={1} />
 				})}
 				{isLoading && movieArray.length === 0 && <PosterSkeleton count={20} />}
-				{isLoading && <div className="loader" />}
 			</div>
+			{isLoading && <div className="loader" />}
 		</div>
 	)
 }

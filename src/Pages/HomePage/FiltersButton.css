@@ -1,0 +1,19 @@
+#filters {
+    margin: 5px;
+    display: flex;
+    cursor: pointer;
+
+    overflow: hidden;
+    border-radius: 10px;
+    
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 25px;
+    width: clamp(1vw,2vw,500px);
+}
+  #filters img {
+    width: 100%;
+    object-fit: contain;
+    color: white;
+
+  }
