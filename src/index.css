@@ -1,6 +1,7 @@
 :root{
   --dark:#0D0D0D;
   --light: #181818;
+  --mobile: 2000px
 }
 body {
   margin: 0;

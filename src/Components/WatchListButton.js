@@ -1,5 +1,6 @@
 import React from "react"
-import { AiFillStar, AiOutlineStar } from "react-icons/ai"
+
+import { BsFillBookmarkPlusFill, BsFillBookmarkDashFill } from "react-icons/bs"
 import { useWatchList } from "../Contexts/WatchListContext"
 
 function WatchListButton({ movie }) {
@@ -14,16 +15,18 @@ function WatchListButton({ movie }) {
 	return !isInWatchList() ? (
 		<div
 			className="save-to-watchlist"
-			onClick={() => setList(oldList => [...oldList, movie._id])}
+			onClick={() => setList((oldList) => [...oldList, movie._id])}
 		>
-			<AiOutlineStar size={25} color="white" />
+			<BsFillBookmarkPlusFill size={"1.7vmax"} color="white" />
 		</div>
 	) : (
 		<div
 			className="save-to-watchlist"
-			onClick={() => setList(oldList => oldList.filter(id => id !== movie._id))}
+			onClick={() =>
+				setList((oldList) => oldList.filter((id) => id !== movie._id))
+			}
 		>
-			<AiFillStar size={25} color="gold" />
+			<BsFillBookmarkDashFill size={"1.7vw"} color="gold" />
 		</div>
 	)
 }

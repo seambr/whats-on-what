@@ -30,3 +30,11 @@
   height: 100%;
 
 }
+@media all and (max-width: 600px) {
+  .hero {
+
+    padding-left: 0;
+
+  }
+  
+}

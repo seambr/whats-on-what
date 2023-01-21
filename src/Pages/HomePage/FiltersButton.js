@@ -1,8 +1,8 @@
 import React from "react"
 import "./FiltersButton.css"
-function FiltersButton() {
+function FiltersButton(onClick) {
 	return (
-		<div id="filters">
+		<div onClick={onClick} id="filters">
 			<img src="../logos/FILTER_ICON.svg" alt="" />
 		</div>
 	)

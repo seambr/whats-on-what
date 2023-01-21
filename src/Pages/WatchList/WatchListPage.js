@@ -26,8 +26,10 @@ function WatchListPage() {
 				if (axios.isCancel(err)) return
 				console.error(err)
 			})
-		return () => cancel()
-	}, [list])
+		return () => {
+			cancel()
+		}
+	}, [])
 
 	if (movieArray.length > 0) {
 		return (

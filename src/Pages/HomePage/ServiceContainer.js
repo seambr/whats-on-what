@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react"
 import { BsBookmarksFill } from "react-icons/bs"
 import { useSearch } from "../../Contexts/SearchContext.js"
-
+import { AiFillHome } from "react-icons/ai"
 import GenreTag from "../../Components/GenreTag.js"
 import FiltersButton from "./FiltersButton.js"
 import { Link } from "react-router-dom"
@@ -33,6 +33,9 @@ function ServiceContainer() {
 
 	return (
 		<div className="left-bar">
+			<Link to="/">
+				<AiFillHome color="white" className="left-icon home-icon" size="30" />
+			</Link>
 			<div className="services">
 				{services.map((s, i) => (
 					<Service
@@ -44,9 +47,10 @@ function ServiceContainer() {
 			</div>
 			<div className="divider" />
 			<Link to="/watchlist">
-				<BsBookmarksFill className="left-icon" size={30} />
+				<BsBookmarksFill className="left-icon" size="30" />
 			</Link>
-			<FiltersButton />
+			<FiltersButton onClick={(e) => setShow((e) => !e)} />
+			{show && <div className="filter-container"></div>}
 		</div>
 	)
 }
@@ -54,12 +58,12 @@ function ServiceContainer() {
 function Service({ service, imgSource }) {
 	const { query, setQuery } = useSearch()
 	const numSubscribed = Object.keys(query.subscribedServices).filter(
-		key => query.subscribedServices[key] === true
+		(key) => query.subscribedServices[key] === true
 	)
 
 	function updateServiceList() {
 		if (query.subscribedServices[service] && numSubscribed.length === 1) return
-		setQuery(old => ({
+		setQuery((old) => ({
 			...old,
 			subscribedServices: {
 				...old.subscribedServices,
@@ -86,7 +90,7 @@ function Filter({ name, value, onChange, options }) {
 				<option selected disabled hidden>
 					{name}
 				</option>
-				{options.map(option => (
+				{options.map((option) => (
 					<option value={option}>{option.toUpperCase()}</option>
 				))}
 			</select>

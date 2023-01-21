@@ -17,7 +17,6 @@ function Hero() {
 					</div>
 				</Link>
 			</div>
-
 			<Search />
 		</nav>
 	)
