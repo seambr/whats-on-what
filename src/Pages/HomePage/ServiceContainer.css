@@ -1,30 +1,23 @@
-
+.wrapper-bar{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  z-index: 500;
+}
 
 .left-bar{
   display: flex;
   align-items: center;
-  z-index: 1000;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
+
   flex-direction: column;
   height: 100%;
+  width: 100%;
   border-right: 2px solid var(--light);
-  width: clamp(100px,2vw,500px);
   background-color: var(--dark);
-}
-
-.services{
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 0.1vw;
-  padding-top: 60px;
-  padding-bottom: 20%;
-  width: clamp(60px,2vw,500px);
 
 }
+
 
 .divider{
   width: 70px;
@@ -44,15 +37,14 @@
 
 
 
-.subscription-container {
+.services {
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 0.5 0.5 0;
   padding-bottom: 5px;
   padding-top: 10px;
   background-color: rgba(0, 0, 0, 0);
-  width: clamp(100px,5vw,500px);
+
 }
 .subscription-logo-container {
   margin: 5px;
@@ -60,11 +52,9 @@
   cursor: pointer;
   aspect-ratio: 1/1;
 
-  max-height: clamp(100px,5vw,500px);
-  max-width: clamp(100px,5vw,500px);
   overflow: hidden;
 
-  border-radius: 100%;
+  border-radius: 999px;
 }
 .subscription-logo-container img {
   
@@ -78,16 +68,7 @@
   filter: none;
 }
 
-.filters {
-  margin-top: 1em;
-  width: 100%;
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  grid-template-rows: repeat(3,auto);
-  grid-template-columns: repeat(10,auto);
-}
+
 
 .filter-select {
   border: none;
@@ -104,7 +85,7 @@
 
 .left-icon{
   cursor: pointer;
-  margin-top: 30px;
+  margin: 2vw;
   fill: white;
 }
 .left-icon:hover{
@@ -113,49 +94,61 @@
 
 
 .filter-container{
+
+  padding: 0 50px;
   position: absolute;
-  width: 200px;
   height: 100%;
-  background-color: rebeccapurple;
+  background-color: var(--dark);
+
+  border-right: 2px solid var(--light);
   left: clamp(100px,2vw,500px);
+  color: white;
+  animation: 10000ms ease-out slideInFromLeft;
+  z-index: -1;
+}
+.random-cont{
+
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2,1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 5px;
 }
 
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
+
 @media only screen and (max-width: 600px) {
-  .home-icon{
-    position: absolute;
-    visibility: hidden;
-  }
-  .left-bar {
-    position: fixed;
-
-    align-items: center;
-    bottom: 0;
-    top: auto;
-    flex-direction: row;
-    width: 100%;
-    height: auto;
-    padding: 1vh 0;
-    justify-content: space-around;
-    gap: 1vw;
-  }
-  .services{
-    padding: 0;
-    margin: 0;
-    height: auto;
-    width: auto;
-    flex-direction: row;
-
-  }
-  .left-bar *{
-    margin: 0;
-    padding: 0;
-  }
-  #filters{
-    position: relative;
-    margin: 0;
-  }
+ .wrapper-bar,.left-bar{
+  grid-column: 1 / 3;
+  grid-row: 3 / 4;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+ }
+ .services{
+  width: auto;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  flex-direction: row;
+  flex-basis: 200px;
+  flex-grow: 0;
+  flex-shrink: 0;
+ }
  .divider{
-  visibility: hidden;
-  position: absolute;
- } 
+  display: none;
+ }
+ .subscription-logo-container{
+  height: 50%;
+ }
 }

@@ -20,7 +20,6 @@ function HomePage() {
 			<SubscriptionContext.Provider
 				value={{ subscribedServices, setSubscribedServices }}
 			>
-				<ServiceContainer />
 				<Grid />
 			</SubscriptionContext.Provider>
 		</div>

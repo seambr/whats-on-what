@@ -1,18 +1,13 @@
 .grid-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
   width: calc(100%-100px);
   flex-direction: column;
   height: 100%;
-  margin-left: 100px;
-
-
 }
 .movie-grid {
   overflow: visible;
   margin: auto;
-  margin-top: 4vh;
+  margin-top: 1vh;
   display: grid;
   width: 70%;
   grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -29,7 +24,9 @@
   border-radius: 50%;
   width: 80px;
   height: 80px;
+  aspect-ratio: 1/1;
   animation: spin 1.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+  margin:auto;
 }
 @keyframes spin {
   0% {

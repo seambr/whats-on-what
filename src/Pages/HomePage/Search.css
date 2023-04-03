@@ -4,11 +4,12 @@
   align-items: center;
   flex-direction: column;
   position: relative;
-  height: 6vh;
-  z-index: 500;
-  margin-bottom: 1em;
-  width: 100%;
 
+  z-index: 500;
+  min-width: 100%;
+  min-height: 50px;
+
+  
 }
 .search-container form {
   display: flex;
@@ -16,9 +17,8 @@
   align-items: center;
   height: 100%;
   flex-direction: column;
-  width: clamp(200px,100%,1200px);
   transition: all 200ms ease-in-out;
-
+  width: 100%;
 }
 
 
@@ -45,15 +45,12 @@
 }
 .movie-search:focus-within{
   box-sizing: border-box;
-  width: 100%;
-  border-bottom: 2px solid #fff;
+  width: 95%;
+
 }
 
 
 @media all and (max-width: 600px) {
-  .search-container {
-    width: 70%;
-    margin-bottom: 10px;
-  }
+
 
 }

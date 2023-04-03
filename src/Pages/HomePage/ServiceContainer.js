@@ -32,25 +32,41 @@ function ServiceContainer() {
 	const [show, setShow] = useState(false)
 
 	return (
-		<div className="left-bar">
-			<Link to="/">
-				<AiFillHome color="white" className="left-icon home-icon" size="30" />
-			</Link>
-			<div className="services">
-				{services.map((s, i) => (
-					<Service
-						key={i}
-						service={s}
-						imgSource={`../logos/${s}-icon.svg`}
-					></Service>
+		<div className="wrapper-bar">
+			<div className="left-bar">
+				{show && <FilterContainer genreList={genreList} />}
+				<Link to="/">
+					<AiFillHome color="white" className="left-icon home-icon" size="30" />
+				</Link>
+				<div className="services">
+					{services.map((s, i) => (
+						<Service
+							key={i}
+							service={s}
+							imgSource={`../logos/${s}-icon.svg`}
+						></Service>
+					))}
+				</div>
+				<div className="divider" />
+				<Link to="/watchlist">
+					<BsBookmarksFill className="left-icon" size="30" />
+				</Link>
+				<FiltersButton onClick={() => setShow((e) => !e)} />
+			</div>
+		</div>
+	)
+}
+
+function FilterContainer({ genreList }) {
+	return (
+		<div className="filter-container">
+			<h1>Filters</h1>
+			<h4>Genres</h4>
+			<div className="random-cont">
+				{genreList.map((g) => (
+					<GenreTag text={g} clickable fontSize="0.7rem" />
 				))}
 			</div>
-			<div className="divider" />
-			<Link to="/watchlist">
-				<BsBookmarksFill className="left-icon" size="30" />
-			</Link>
-			<FiltersButton onClick={(e) => setShow((e) => !e)} />
-			{show && <div className="filter-container"></div>}
 		</div>
 	)
 }
@@ -79,21 +95,6 @@ function Service({ service, imgSource }) {
 				src={imgSource}
 				alt={service}
 			/>
-		</div>
-	)
-}
-
-function Filter({ name, value, onChange, options }) {
-	return (
-		<div className="filters-container">
-			<select className="filter-select" value={value} onChange={onChange}>
-				<option selected disabled hidden>
-					{name}
-				</option>
-				{options.map((option) => (
-					<option value={option}>{option.toUpperCase()}</option>
-				))}
-			</select>
 		</div>
 	)
 }

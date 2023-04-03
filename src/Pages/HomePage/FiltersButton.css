@@ -1,16 +1,12 @@
 #filters {
-    margin: 5px;
     display: flex;
     cursor: pointer;
-
     overflow: hidden;
     border-radius: 10px;
-    
-    position: absolute;
     bottom: 0;
-    margin-bottom: 25px;
-    width: clamp(30px,1vw,500px);
-    padding: 0.1vw;
+
+
+
 }
   #filters img {
     width: 100%;

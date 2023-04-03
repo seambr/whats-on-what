@@ -13,13 +13,13 @@ function Grid() {
 	const observer = useRef()
 
 	const lastElementRef = useCallback(
-		node => {
+		(node) => {
 			if (isLoading) return
 			if (observer.current) observer.current.disconnect()
 
-			observer.current = new IntersectionObserver(entries => {
+			observer.current = new IntersectionObserver((entries) => {
 				if (entries[0].isIntersecting && hasMore) {
-					setPageNumber(old => old + 1)
+					setPageNumber((old) => old + 1)
 				}
 			})
 
