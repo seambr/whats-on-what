@@ -3,6 +3,7 @@ import MoviePoster from "../../Components/MoviePoster"
 import { useWatchList } from "../../Contexts/WatchListContext"
 import axios from "axios"
 import "./WatchListPage.css"
+import { apiURL } from "../../apiURL"
 function WatchListPage() {
 	const { list } = useWatchList()
 	const [movieArray, setMovieArray] = useState([])
@@ -12,26 +13,27 @@ function WatchListPage() {
 		console.log("calling with", list)
 		axios({
 			method: "GET",
-			// url: `http://192.168.1.207:5000/api/movies/id/`,
-			url: `http://localhost:5000/api/movies/id/`,
+			url: `http://${apiURL}:5000/api/movies/id/`,
 			params: {
 				idList: JSON.stringify(list),
 			},
-			cancelToken: new axios.CancelToken(c => (cancel = c)),
+			cancelToken: new axios.CancelToken((c) => (cancel = c)),
 		})
-			.then(res => {
-				setMovieArray(old => (res.data.movies ? res.data.movies : []))
+			.then((res) => {
+				setMovieArray((old) => (res.data.movies ? res.data.movies : []))
 			})
-			.catch(err => {
+			.catch((err) => {
 				if (axios.isCancel(err)) return
 				console.error(err)
 			})
-		return () => cancel()
-	}, [list])
+		return () => {
+			cancel()
+		}
+	}, [])
 
 	if (movieArray.length > 0) {
 		return (
-			<div className="grid-container">
+			<div className="watch-list-page">
 				<div className="movie-grid">
 					{movieArray.map((movie, index) => {
 						return (

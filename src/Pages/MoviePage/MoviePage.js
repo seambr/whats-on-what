@@ -1,10 +1,9 @@
 import axios from "axios"
 import React, { useEffect, useState } from "react"
-import { SkeletonTheme } from "react-loading-skeleton"
-import { useLocation, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
+import { apiURL } from "../../apiURL"
 import GenreTag from "../../Components/GenreTag"
 import LargeButton from "../../Components/LargeButton"
-import MoviePoster from "../../Components/MoviePoster"
 import MovieRating from "../../Components/MovieRating"
 import RatingStars from "../../Components/RatingStars"
 import ServiceAvailibilityLogos from "../../Components/ServiceAvailibilityLogos"
@@ -35,30 +34,29 @@ function MoviePage() {
 	// Gets movie via the id in the link
 	useEffect(() => {
 		let cancel
-
 		axios({
 			method: "GET",
-			url: "http://localhost:5000/api/movies/byId/",
+			url: `http://${apiURL}:5000/api/movies/byId/`,
 			params: {
 				id: params.id,
 			},
-			cancelToken: new axios.CancelToken(c => (cancel = c)),
+			cancelToken: new axios.CancelToken((c) => (cancel = c)),
 		})
-			.then(res => {
+			.then((res) => {
 				setMovie(res.data.movie)
 			})
-			.catch(err => {
+			.catch((err) => {
 				if (axios.isCancel(err)) return
 				console.error(err)
 			})
 
 		return () => cancel()
-	}, [])
+	}, [params.id])
 
 	if (!movie) return <div />
 
 	return (
-		<main className="movie-page">
+		<main className="movie-page page">
 			<section className="movie-info">
 				<div className="darken" />
 				<img
@@ -75,11 +73,11 @@ function MoviePage() {
 						draggable="false"
 					/>
 					<div className="movie-page-text">
-						<div className="row-flex">
+						<div className="title-rating">
 							<h1 style={titleStyle}>{movie.title}</h1>
 							<MovieRating rating={movie.rating} />
 						</div>
-						<div className="row-flex">
+						<div className="runtime-rating">
 							<span
 								style={{
 									paddingLeft: "0.5em",
@@ -89,11 +87,13 @@ function MoviePage() {
 							>
 								{movie.runtime}
 							</span>
-							<RatingStars rating={movie.score} color="black" />
+							<RatingStars rating={movie.score} color="gold" />
 						</div>
-						<p style={summaryStyle}>{movie.summary}</p>
+						<p className="summary" style={summaryStyle}>
+							{movie.summary}
+						</p>
 						<div className="row-flex" style={{ margin: "1em 0 2em 0" }}>
-							{movie.genres.map(e => (
+							{movie.genres.map((e) => (
 								<GenreTag text={e} key={e} fontSize="12px" />
 							))}
 						</div>
@@ -111,7 +111,7 @@ function MoviePage() {
 						>
 							Watch Now On
 						</span>
-						<div className="row-flex">
+						<div className="row-flex" style={{ paddingBottom: "5em" }}>
 							<ServiceAvailibilityLogos
 								availibility={movie.availibility}
 								rounded

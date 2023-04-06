@@ -1,11 +1,9 @@
 .genre-tag{
     color: white;
     border: 2px solid #bbb;
-    width: fit-content;
     padding-left: 1em;
     padding-right: 1em;
     padding-top: 0.25em;
     padding-bottom: 0.25em;
-
-
+    user-select: none;
 }

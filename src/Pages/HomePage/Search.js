@@ -1,12 +1,9 @@
 import React, { useEffect, useRef, useState } from "react"
-
-import { useSearch } from "../../Contexts/SearchContext"
 import useDebounce from "./hooks/useDebounce"
 import SearchResult from "./SearchResult"
 import "./Search.css"
-
 import useSearchMovies from "./hooks/useSearchMovies"
-import PosterSkeleton from "../../Skeletons/PosterSkeleton"
+
 function Search() {
 	const [search, setSearch] = useState("")
 	const searchContainerRef = useRef()
@@ -18,6 +15,10 @@ function Search() {
 		if (isOpen) return
 
 		setIsOpen(true)
+	}
+	function onSearchClick(e) {
+		setIsOpen(false)
+		setSearch("")
 	}
 	// If user clicks outside of search results the prompt closes
 	useEffect(() => {
@@ -43,7 +44,7 @@ function Search() {
 			<form action="">
 				<input
 					value={search}
-					placeholder="Search..."
+					placeholder="Search"
 					className={`movie-search ${isOpen ? "open" : ""}`}
 					type="text"
 					onChange={e => setSearch(e.target.value)}
@@ -52,13 +53,13 @@ function Search() {
 				{isOpen && search !== "" && (
 					<div className="search-results">
 						{movieArray[0] ? (
-							<SearchResult movie={movieArray[0]}></SearchResult>
+							<SearchResult movie={movieArray[0]} onClick={onSearchClick} />
 						) : null}
 						{movieArray[1] ? (
-							<SearchResult movie={movieArray[1]}></SearchResult>
+							<SearchResult movie={movieArray[1]} onClick={onSearchClick} />
 						) : null}
 						{movieArray[2] ? (
-							<SearchResult movie={movieArray[2]}></SearchResult>
+							<SearchResult movie={movieArray[2]} onClick={onSearchClick} />
 						) : null}
 						{movieArray.length === 0 && (
 							<h1

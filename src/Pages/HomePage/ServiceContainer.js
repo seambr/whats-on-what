@@ -1,8 +1,10 @@
 import React, { useContext, useState } from "react"
-import { SubscriptionContext } from "./HomePage.js"
+import { BsBookmarksFill } from "react-icons/bs"
 import { useSearch } from "../../Contexts/SearchContext.js"
-import { BsChevronCompactDown, BsChevronCompactUp } from "react-icons/bs"
+import { AiFillHome } from "react-icons/ai"
 import GenreTag from "../../Components/GenreTag.js"
+import FiltersButton from "./FiltersButton.js"
+import { Link } from "react-router-dom"
 function ServiceContainer() {
 	// ideally these serevices/genres wouldnt be hard coded, but i dont plan on expanding
 	const genreList = [
@@ -30,39 +32,41 @@ function ServiceContainer() {
 	const [show, setShow] = useState(false)
 
 	return (
-		<div className="subscription-container">
-			<div className="services">
-				{services.map((s, i) => (
-					<Service
-						key={i}
-						service={s}
-						imgSource={`../logos/${s}-icon.png`}
-					></Service>
+		<div className="wrapper-bar">
+			<div className="left-bar">
+				{show && <FilterContainer genreList={genreList} />}
+				<Link to="/">
+					<AiFillHome color="white" className="left-icon home-icon" size="30" />
+				</Link>
+				<div className="services">
+					{services.map((s, i) => (
+						<Service
+							key={i}
+							service={s}
+							imgSource={`../logos/${s}-icon.svg`}
+						></Service>
+					))}
+				</div>
+				<div className="divider" />
+				<Link to="/watchlist">
+					<BsBookmarksFill className="left-icon" size="30" />
+				</Link>
+				<FiltersButton onClick={() => setShow((e) => !e)} />
+			</div>
+		</div>
+	)
+}
+
+function FilterContainer({ genreList }) {
+	return (
+		<div className="filter-container">
+			<h1>Filters</h1>
+			<h4>Genres</h4>
+			<div className="random-cont">
+				{genreList.map((g) => (
+					<GenreTag text={g} clickable fontSize="0.7rem" />
 				))}
 			</div>
-			{!show ? (
-				<BsChevronCompactDown
-					color="white"
-					cursor="pointer"
-					size={30}
-					onClick={() => setShow(true)}
-				></BsChevronCompactDown>
-			) : (
-				<>
-					<div className="filters">
-						{genreList.map(e => (
-							<GenreTag text={e} fontSize="12px" clickable />
-						))}
-						{/* <Filter name='Rating' value={query.genre} onChange={(e)=>setQuery(old=>({...old,genre:e.target.value}))}></Filter> */}
-					</div>
-					<BsChevronCompactUp
-						color="white"
-						cursor="pointer"
-						size={30}
-						onClick={() => setShow(false)}
-					></BsChevronCompactUp>
-				</>
-			)}
 		</div>
 	)
 }
@@ -70,12 +74,12 @@ function ServiceContainer() {
 function Service({ service, imgSource }) {
 	const { query, setQuery } = useSearch()
 	const numSubscribed = Object.keys(query.subscribedServices).filter(
-		key => query.subscribedServices[key] === true
+		(key) => query.subscribedServices[key] === true
 	)
 
 	function updateServiceList() {
 		if (query.subscribedServices[service] && numSubscribed.length === 1) return
-		setQuery(old => ({
+		setQuery((old) => ({
 			...old,
 			subscribedServices: {
 				...old.subscribedServices,
@@ -91,21 +95,6 @@ function Service({ service, imgSource }) {
 				src={imgSource}
 				alt={service}
 			/>
-		</div>
-	)
-}
-
-function Filter({ name, value, onChange, options }) {
-	return (
-		<div className="filters-container">
-			<select className="filter-select" value={value} onChange={onChange}>
-				<option selected disabled hidden>
-					{name}
-				</option>
-				{options.map(option => (
-					<option value={option}>{option.toUpperCase()}</option>
-				))}
-			</select>
 		</div>
 	)
 }

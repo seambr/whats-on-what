@@ -13,13 +13,13 @@ function Grid() {
 	const observer = useRef()
 
 	const lastElementRef = useCallback(
-		node => {
+		(node) => {
 			if (isLoading) return
 			if (observer.current) observer.current.disconnect()
 
-			observer.current = new IntersectionObserver(entries => {
+			observer.current = new IntersectionObserver((entries) => {
 				if (entries[0].isIntersecting && hasMore) {
-					setPageNumber(old => old + 1)
+					setPageNumber((old) => old + 1)
 				}
 			})
 
@@ -29,7 +29,7 @@ function Grid() {
 	)
 
 	return (
-		<div className="grid-container">
+		<>
 			<div className="movie-grid">
 				{movieArray.map((movie, index) => {
 					if (index === movieArray.length - 1) {
@@ -45,9 +45,9 @@ function Grid() {
 					return <MoviePoster key={index} movie={movie} showAvailibility={1} />
 				})}
 				{isLoading && movieArray.length === 0 && <PosterSkeleton count={20} />}
-				{isLoading && <div className="loader" />}
 			</div>
-		</div>
+			{isLoading && <div className="loader" />}
+		</>
 	)
 }
 

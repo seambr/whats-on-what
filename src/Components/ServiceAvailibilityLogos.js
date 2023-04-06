@@ -5,14 +5,14 @@ function ServiceAvailibilityLogos({ availibility, rounded }) {
 		<>
 			{availibility.map(e => (
 				<img
-					src={`../logos/${e}-icon.png`}
+					src={`../logos/${e}-icon.svg`}
 					alt={e}
 					key={e}
 					style={{
 						borderRadius: rounded ? "12px" : 0,
 						bottom: "0",
-						marginTop: "2em",
 					}}
+					draggable={false}
 				/>
 			))}
 		</>

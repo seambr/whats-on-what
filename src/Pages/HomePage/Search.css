@@ -4,10 +4,12 @@
   align-items: center;
   flex-direction: column;
   position: relative;
-  min-width: 350px;
-  width: 24%;
-  height: 35px;
+
   z-index: 500;
+  min-width: 100%;
+  min-height: 50px;
+
+  
 }
 .search-container form {
   display: flex;
@@ -15,49 +17,40 @@
   align-items: center;
   height: 100%;
   flex-direction: column;
+  transition: all 200ms ease-in-out;
   width: 100%;
+}
 
-}
-.filter-button {
-  border: none;
-  padding: 10px;
-  padding-left: 10px;
-  padding-right: 20px;
-  font-size: 1rem;
-  background-color: rgba(0, 0, 0, 0.81);
-  border-radius: 5px;
-  color: #666;
-}
 
 .movie-search {
-  font-family: Poppins;
-  text-indent: 10px;
-  padding: 0;
-  padding-right: 50px;
-  font-weight: 300;
-  font-size: 1rem;
-  background-image: url(../../Components/search1.svg);
-  background-repeat: no-repeat;
-  background-position: 97% center;
-  background-size: 18px;
-  background-color: transparent;
-  width: 100%;
-  height: 100%;
+  height: 32px;
+  width: 80%;
   outline: none;
   border-style: none;
   transition: all 400ms ease-in-out;
-  color: rgb(255, 255, 255);
-  background-color: #333;
-  border-radius: 3px;
-  /* box-shadow: inset 0 0 8px 3px rgba(0, 0, 0, 0.3); */
-}
-.movie-search:focus-within {
-  border-radius: 5px 5px 0 0;
+
+  background-color: #181818;
+  color: rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  text-align: center;
+
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
 }
 
+.movie-search:focus::placeholder {
+  color: transparent;
+}
+.movie-search:focus-within{
+  box-sizing: border-box;
+  width: 95%;
+
+}
+
+
 @media all and (max-width: 600px) {
-  .search-container {
-    width: 70%;
-    margin-bottom: 10px;
-  }
+
+
 }

@@ -6,6 +6,11 @@
 }
 html {
   height: 100%;
+  background: var(--dark);
+}
+body{
+  overflow: hidden;
+
 }
 
 /* .blur {
@@ -16,5 +21,25 @@ html {
 } */
 .app {
   width: 100%;
+  height: 100%;
   position: relative;
+  outline: 3px solid red;
+  display: grid;
+  grid-template-rows: clamp(100px,100px,130px) auto;
+  grid-template-columns: clamp(100px,2vw,500px) 1fr;
+}
+
+
+
+
+img{
+  pointer-events: none;
+}
+
+@media only screen and (max-width: 600px) {
+
+ .app{
+  grid-template-rows: 100px 1fr 100px;
+  grid-template-columns: 1fr;
+ }
 }

@@ -12,8 +12,8 @@ function GenreTag({
 	const { query, setQuery } = useSearch()
 	const [toggled, setToggled] = useState(query.genreList[text])
 	const toggleGenreFilter = () => {
-		setToggled(old => !old)
-		setQuery(old => ({
+		setToggled((old) => !old)
+		setQuery((old) => ({
 			...old,
 			genreList: { ...old.genreList, [text]: !old.genreList[text] },
 		}))
@@ -29,6 +29,7 @@ function GenreTag({
 					color: toggled ? "black" : "white",
 					fontSize: fontSize,
 					cursor: "pointer",
+					textAlign: "center",
 				}}
 				onClick={toggleGenreFilter}
 			>

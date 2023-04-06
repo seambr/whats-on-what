@@ -3,101 +3,44 @@
 } */
 .hero {
   display: flex;
-  position: sticky;
+  flex-direction: column;
   width: 100%;
-  top: 0;
-  align-items: center;
   z-index: 500;
-  justify-content: space-around;
   gap: 20%;
+  background: var(--dark);
 
-  flex: 0.5 0.5 0.5;
-  min-height: fit-content;
-  max-height: 100px;
-  background-color: rgb(20, 20, 20);
-  opacity: 1;
-  /* background-image:  radial-gradient(#00000081 0.8px, transparent 0.8px), radial-gradient(rgba(28, 28, 28, 0.335) 0.8px, #0c0b12 0.8px);
-  background-size: 32px 32px;
-  background-position: 0 0,16px 16px; */
-  /* box-shadow: 1px 1px 2px 2px black; */
-  /* border-bottom: 3px solid rgb(7, 135, 255); */
-}
-.hero-left {
-  display: flex;
-  min-width: fit-content;
+  grid-column: 2 / 3;
+  align-items: center;
 
-  justify-content: space-evenly;
-  align-items: center;
+  height:fit-content;
+  min-height: 100px;
+  justify-content: end;
+  margin-top: 10px;
 }
-.hero-menu {
-  display: flex;
-}
-.watch-list {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  color: rgb(255, 255, 255);
-  width: fit-content;
-  margin-left: 50px;
-  font-size: 13px;
-  font-weight: 400;
-}
-.watch-list:hover {
-  color: #aaa;
-}
+
 
 .hero__logo-container {
   align-items: center;
   justify-content: center;
-  min-width: 200px;
+  
   max-height: 100%;
   background-repeat: no-repeat;
-
-  flex: 0.5;
+  width: clamp(200px,10vw,700px);
 }
 .hero__logo-container img {
   padding-top: 5px;
   height: 100%;
 
 }
-/*  */
-/*  */
 
-@media all and (max-width: 1000px) {
-  /* * {
-    outline: 1px solid limegreen;
-  } */
-  .hero {
-    gap: 0;
-
-    justify-content: space-around;
-    align-items: center;
-    padding-bottom: 5px;
-    max-height: 200px;
-    flex: 0.5 0.5 0;
-  }
-  .hero__logo-container {
-    width: 40%;
-  }
-  .hero-menu {
-    display: none;
-  }
-}
-@media all and (max-width: 600px) {
-  .hero {
-    gap: 0;
+@media only screen and (max-width: 600px) {
+  .hero{
+    display: flex;
     flex-direction: column;
-    justify-content: center;
+    grid-column: 1 / 3;
     align-items: center;
-    padding-bottom: 15px;
-    max-height: 200px;
-    flex: 0.5 0.5 0;
+    justify-content: center;
+
   }
-  .hero__logo-container {
-    width: 40%;
-  }
-  .hero-menu {
-    display: none;
-  }
-}
+
+ }
