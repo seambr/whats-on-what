@@ -19,11 +19,11 @@
 
 }
 .loader {
-  border: 16px solid #333;
-  border-top: 16px solid rgb(56, 139, 208);
+  border: 8px solid #333;
+  border-top: 8px solid rgb(56, 139, 208);
   border-radius: 50%;
-  width: 80px;
-  height: 80px;
+  width: 40px;
+
   aspect-ratio: 1/1;
   animation: spin 1.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
   margin:auto;

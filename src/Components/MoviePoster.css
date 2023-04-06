@@ -4,7 +4,7 @@
   border-radius: 0.35em;
   overflow: hidden;
   aspect-ratio: 2/3;
-  /* box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.493); */
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.493);
   transition: transform 200ms;
 }
 .movie-card-container {

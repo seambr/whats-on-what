@@ -30,7 +30,7 @@ function SearchResult({ movie, onClick }) {
 						{truncateString(movie.summary, 60)}
 					</p>
 					<p style={{ color: "violet" }}>
-						{movie.availibility.map(e => e.toUpperCase() + "\n")}
+						{movie.availibility.map((e) => e.toUpperCase() + "\n")}
 					</p>
 				</div>
 			</div>

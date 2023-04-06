@@ -33,7 +33,6 @@ function MoviePage() {
 	const [movie, setMovie] = useState(null)
 	// Gets movie via the id in the link
 	useEffect(() => {
-		console.log("aaaaaaaa")
 		let cancel
 		axios({
 			method: "GET",
@@ -41,12 +40,12 @@ function MoviePage() {
 			params: {
 				id: params.id,
 			},
-			cancelToken: new axios.CancelToken(c => (cancel = c)),
+			cancelToken: new axios.CancelToken((c) => (cancel = c)),
 		})
-			.then(res => {
+			.then((res) => {
 				setMovie(res.data.movie)
 			})
-			.catch(err => {
+			.catch((err) => {
 				if (axios.isCancel(err)) return
 				console.error(err)
 			})
@@ -57,7 +56,7 @@ function MoviePage() {
 	if (!movie) return <div />
 
 	return (
-		<main className="movie-page">
+		<main className="movie-page page">
 			<section className="movie-info">
 				<div className="darken" />
 				<img
@@ -94,7 +93,7 @@ function MoviePage() {
 							{movie.summary}
 						</p>
 						<div className="row-flex" style={{ margin: "1em 0 2em 0" }}>
-							{movie.genres.map(e => (
+							{movie.genres.map((e) => (
 								<GenreTag text={e} key={e} fontSize="12px" />
 							))}
 						</div>

@@ -17,12 +17,12 @@ function WatchListPage() {
 			params: {
 				idList: JSON.stringify(list),
 			},
-			cancelToken: new axios.CancelToken(c => (cancel = c)),
+			cancelToken: new axios.CancelToken((c) => (cancel = c)),
 		})
-			.then(res => {
-				setMovieArray(old => (res.data.movies ? res.data.movies : []))
+			.then((res) => {
+				setMovieArray((old) => (res.data.movies ? res.data.movies : []))
 			})
-			.catch(err => {
+			.catch((err) => {
 				if (axios.isCancel(err)) return
 				console.error(err)
 			})
@@ -33,7 +33,7 @@ function WatchListPage() {
 
 	if (movieArray.length > 0) {
 		return (
-			<div className="grid-container">
+			<div className="watch-list-page">
 				<div className="movie-grid">
 					{movieArray.map((movie, index) => {
 						return (

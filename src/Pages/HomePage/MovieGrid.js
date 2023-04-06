@@ -29,7 +29,7 @@ function Grid() {
 	)
 
 	return (
-		<div className="grid-container">
+		<>
 			<div className="movie-grid">
 				{movieArray.map((movie, index) => {
 					if (index === movieArray.length - 1) {
@@ -47,7 +47,7 @@ function Grid() {
 				{isLoading && movieArray.length === 0 && <PosterSkeleton count={20} />}
 			</div>
 			{isLoading && <div className="loader" />}
-		</div>
+		</>
 	)
 }
 
