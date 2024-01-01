@@ -18,12 +18,12 @@
   min-height: 100%;
   grid-column: 2/3;
   grid-row: 2/3;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 @media only screen and (max-width: 600px) {
-  .home-page{
+  .home-page {
     grid-column-start: 1 span 1;
     grid-row-start: 2 span 1;
   }
- }
+}
