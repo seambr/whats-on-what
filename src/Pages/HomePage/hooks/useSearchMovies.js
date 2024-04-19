@@ -1,39 +1,35 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
-import axios from "axios"
-import { apiURL } from "../../../apiURL"
+import axios from "axios";
+import { apiURL } from "../../../apiURL";
+import { supabase } from "../../../utils/supabase";
 function useSearchMovies(searchQuery) {
-  const [isLoading, setIsLoading] = useState(true)
-  const [movieArray, setMovieArray] = useState([])
+  const [isLoading, setIsLoading] = useState(true);
+  const [movieArray, setMovieArray] = useState([]);
 
   useEffect(() => {
     if (searchQuery !== "") {
-      setMovieArray([])
-      let cancel
-      setIsLoading(true)
-      axios({
-        method: "GET",
-        url: `${apiURL}/api/movies/search/`,
-        params: {
-          title: searchQuery,
-          number: 3,
-        },
-        cancelToken: new axios.CancelToken((c) => (cancel = c)),
-      })
-        .then((res) => {
-          setMovieArray(res.data.movies)
-          setIsLoading(false)
-        })
-        .catch((err) => {
-          if (axios.isCancel(err)) return
-          console.error(err)
-        })
+      setMovieArray([]);
 
-      return () => cancel()
+      setIsLoading(true);
+      async function getmovies() {
+        const { data: movies, error: error } = await supabase
+          .from("movies")
+          .select("*")
+          .ilike("title", `%av%`)
+          .range(0, 3);
+
+        if (!error) {
+          setMovieArray(movies);
+        }
+      }
+      getmovies();
+    } else {
+      setMovieArray([]);
     }
-  }, [searchQuery])
+  }, [searchQuery]);
 
-  return { movieArray, isLoading }
+  return { movieArray, isLoading };
 }
 
-export default useSearchMovies
+export default useSearchMovies;

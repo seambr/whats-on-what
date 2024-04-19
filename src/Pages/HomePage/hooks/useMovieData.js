@@ -42,7 +42,7 @@ function useMovieData(pageNumber, setPageNumber) {
     setMovieArray([]);
     setPageNumber(1);
   }, [query]);
-  console.log(services);
+
   useEffect(() => {
     setIsLoading(true);
 
@@ -54,38 +54,15 @@ function useMovieData(pageNumber, setPageNumber) {
         .overlaps("genres", genreList)
         .range(pageNumber * 20, pageNumber * 20 + 20 - 1);
 
-      console.log(error);
-      if (movies.length > 1) {
+      if (!error && movies.length > 1) {
         setMovieArray((old) => [...old, ...movies]);
+        setHasMore(true);
+      } else {
+        setHasMore(false);
       }
     }
     getmovies();
     setIsLoading(false);
-    setHasMore(true);
-
-    // axios({
-    //   method: "GET",
-    //   url: `${apiURL}/api/movies/items/`,
-    //   params: {
-    //     service: services,
-    //     page: pageNumber,
-    //     title: query.title,
-    //     genreList: genreList,
-    //     type: query.type,
-    //   },
-    //   cancelToken: new axios.CancelToken((c) => (cancel = c)),
-    // })
-    //   .then((res) => {
-    //     setMovieArray((old) => [...old, ...res.data.movies])
-    //     setIsLoading(false)
-    //     setHasMore(res.data.totalFound > movieArray.length)
-    //   })
-    //   .catch((err) => {
-    //     if (axios.isCancel(err)) return
-    //     console.error(err)
-    //   })
-
-    // return () => cancel()
   }, [query, pageNumber]);
 
   return { movieArray, isLoading, hasMore };

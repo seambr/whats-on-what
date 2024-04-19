@@ -15,7 +15,7 @@ function SearchResult({ movie, onClick }) {
 
   return (
     <Link
-      to={`/movie/${movie._id}`}
+      to={`/movie/${movie.id}`}
       style={{ textDecoration: "none" }}
       onClick={onClick}
     >
@@ -30,7 +30,7 @@ function SearchResult({ movie, onClick }) {
             {truncateString(movie.summary, 60)}
           </p>
           <p style={{ color: "violet" }}>
-            {movie.avaalibility.map((e) => e.toUpperCase() + "\n")}
+            {movie.availability.map((e) => e.toUpperCase() + "\n")}
           </p>
         </div>
       </div>
