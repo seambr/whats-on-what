@@ -1,59 +1,52 @@
-import axios from "axios"
-import React, { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import { apiURL } from "../../apiURL"
-import GenreTag from "../../Components/GenreTag"
-import LargeButton from "../../Components/LargeButton"
-import MovieRating from "../../Components/MovieRating"
-import RatingStars from "../../Components/RatingStars"
-import ServiceAvailibilityLogos from "../../Components/ServiceAvailibilityLogos"
-import "./MoviePage.css"
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { apiURL } from "../../apiURL";
+import GenreTag from "../../Components/GenreTag";
+import LargeButton from "../../Components/LargeButton";
+import MovieRating from "../../Components/MovieRating";
+import RatingStars from "../../Components/RatingStars";
+import ServiceAvailibilityLogos from "../../Components/ServiceAvailibilityLogos";
+import "./MoviePage.css";
+import { supabase } from "../../utils/supabase";
 const tagStyle = {
   color: "#fefbea",
   marginTop: 0,
   fontWeight: "normal",
   fontSize: "12px",
   marginTop: "1em",
-}
+};
 const titleStyle = {
   color: "white",
   fontSize: "2em",
   marginBottom: 0,
   marginTop: 0,
-}
+};
 const summaryStyle = {
   color: "white",
   marginTop: "1em",
   fontWeight: "normal",
   fontSize: "16px",
-}
+};
 function MoviePage() {
   // Link Params
-  const params = useParams()
-  const [movie, setMovie] = useState(null)
+  const params = useParams();
+  const [movie, setMovie] = useState(null);
   // Gets movie via the id in the link
   useEffect(() => {
-    let cancel
-    axios({
-      method: "GET",
-      url: `${apiURL}/api/movies/byId/`,
-      params: {
-        id: params.id,
-      },
-      cancelToken: new axios.CancelToken((c) => (cancel = c)),
-    })
-      .then((res) => {
-        setMovie(res.data.movie)
-      })
-      .catch((err) => {
-        if (axios.isCancel(err)) return
-        console.error(err)
-      })
+    async function getmovie() {
+      const { data: movie, error: error } = await supabase
+        .from("movies")
+        .select("*")
+        .eq("id", `${params.id}`);
 
-    return () => cancel()
-  }, [params.id])
+      setMovie(movie[0]);
+    }
 
-  if (!movie) return <div />
+    getmovie();
+  }, [params.id]);
+
+  if (!movie) return <div />;
 
   return (
     <main className="movie-page page">
@@ -113,7 +106,7 @@ function MoviePage() {
             </span>
             <div className="row-flex" style={{ paddingBottom: "5em" }}>
               <ServiceAvailibilityLogos
-                availibility={movie.availibility}
+                availibility={movie.availability}
                 rounded
               />
             </div>
@@ -121,7 +114,7 @@ function MoviePage() {
         </div>
       </section>
     </main>
-  )
+  );
 }
 
-export default MoviePage
+export default MoviePage;

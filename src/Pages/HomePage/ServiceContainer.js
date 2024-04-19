@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react"
-import { BsBookmarksFill } from "react-icons/bs"
-import { useSearch } from "../../Contexts/SearchContext.js"
-import { AiFillHome } from "react-icons/ai"
-import GenreTag from "../../Components/GenreTag.js"
-import FiltersButton from "./FiltersButton.js"
-import { Link } from "react-router-dom"
+import React, { useContext, useState } from "react";
+import { BsBookmarksFill } from "react-icons/bs";
+import { useSearch } from "../../Contexts/SearchContext.js";
+import { AiFillHome } from "react-icons/ai";
+import GenreTag from "../../Components/GenreTag.js";
+import FiltersButton from "./FiltersButton.js";
+import { Link } from "react-router-dom";
 function ServiceContainer() {
   // ideally these serevices/genres wouldnt be hard coded, but i dont plan on expanding
   const genreList = [
@@ -27,9 +27,9 @@ function ServiceContainer() {
     "Thriller",
     "War",
     "Western",
-  ]
-  const services = ["netflix", "prime", "hbo", "hulu", "disney"]
-  const [show, setShow] = useState(false)
+  ];
+  const services = ["NETFLIX", "PRIME", "MAX", "HULU", "DISNEY"];
+  const [show, setShow] = useState(false);
 
   return (
     <div className="wrapper-bar">
@@ -43,7 +43,7 @@ function ServiceContainer() {
             <Service
               key={i}
               service={s}
-              imgSource={`../logos/${s}-icon.svg`}
+              imgSource={`../logos/${s.toLowerCase()}-icon.svg`}
             ></Service>
           ))}
         </div>
@@ -55,7 +55,7 @@ function ServiceContainer() {
         <span className="open-privacy-policy">Privacy Policy</span>
       </div>
     </div>
-  )
+  );
 }
 
 function FilterContainer({ genreList }) {
@@ -69,24 +69,24 @@ function FilterContainer({ genreList }) {
         ))}
       </div>
     </div>
-  )
+  );
 }
 
 function Service({ service, imgSource }) {
-  const { query, setQuery } = useSearch()
+  const { query, setQuery } = useSearch();
   const numSubscribed = Object.keys(query.subscribedServices).filter(
     (key) => query.subscribedServices[key] === true
-  )
+  );
 
   function updateServiceList() {
-    if (query.subscribedServices[service] && numSubscribed.length === 1) return
+    if (query.subscribedServices[service] && numSubscribed.length === 1) return;
     setQuery((old) => ({
       ...old,
       subscribedServices: {
         ...old.subscribedServices,
         [service]: !old.subscribedServices[service],
       },
-    }))
+    }));
   }
 
   return (
@@ -97,7 +97,7 @@ function Service({ service, imgSource }) {
         alt={service}
       />
     </div>
-  )
+  );
 }
 
-export default ServiceContainer
+export default ServiceContainer;
