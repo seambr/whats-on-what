@@ -37,7 +37,7 @@ function useMovieData(pageNumber, setPageNumber) {
       "Western",
     ];
   }
-  console.log(genreList);
+
   useEffect(() => {
     setMovieArray([]);
     setPageNumber(1);
@@ -52,6 +52,7 @@ function useMovieData(pageNumber, setPageNumber) {
         .select("*")
         .overlaps("genres", genreList)
         .overlaps("availability", services)
+        // .order("title")
         .range((pageNumber - 1) * 20, (pageNumber - 1) * 20 + 20 - 1);
 
       if (!error && movies.length > 1) {

@@ -10,7 +10,7 @@ function WatchListPage() {
   const [movieArray, setMovieArray] = useState([]);
 
   useEffect(() => {
-    console.log("calling with", list);
+    
 
     async function getmovies() {
       const { data: movies, error: error } = await supabase

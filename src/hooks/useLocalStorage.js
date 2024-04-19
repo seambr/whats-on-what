@@ -10,7 +10,7 @@ function useLocalStorage(key, initialValue) {
       const value = window.localStorage.getItem(prefixedKey)
       return value ? JSON.parse(value) : initialValue
     } catch (error) {
-      console.log(error)
+  
       return initialValue
     }
   })
@@ -24,7 +24,7 @@ function useLocalStorage(key, initialValue) {
         window.localStorage.setItem(prefixedKey, JSON.stringify(toBeStored))
       }
     } catch (error) {
-      console.log(error)
+     
     }
   }
 

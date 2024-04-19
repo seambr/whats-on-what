@@ -7,8 +7,6 @@ import MoviePage from "./Pages/MoviePage/MoviePage";
 import WatchListPage from "./Pages/WatchList/WatchListPage";
 import WatchListProvider from "./Contexts/WatchListContext";
 import ServiceContainer from "./Pages/HomePage/ServiceContainer";
-import { supabase } from "./utils/supabase";
-import { useEffect, useState } from "react";
 
 function App() {
   return (
