@@ -52,7 +52,7 @@ function ServiceContainer() {
           <BsBookmarksFill className="left-icon" size="30" />
         </Link>
         <FiltersButton onClick={() => setShow((e) => !e)} />
-        <span className="open-privacy-policy">Privacy Policy</span>
+        {/* <span className="open-privacy-policy">Privacy Policy</span> */}
       </div>
     </div>
   );

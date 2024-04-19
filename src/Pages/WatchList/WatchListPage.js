@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import MoviePoster from "../../Components/MoviePoster";
 import { useWatchList } from "../../Contexts/WatchListContext";
-import axios from "axios";
+
 import "./WatchListPage.css";
-import { apiURL } from "../../apiURL";
+
 import { supabase } from "../../utils/supabase";
 function WatchListPage() {
   const { list } = useWatchList();

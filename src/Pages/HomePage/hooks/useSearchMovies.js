@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
-import axios from "axios";
-import { apiURL } from "../../../apiURL";
+
 import { supabase } from "../../../utils/supabase";
 function useSearchMovies(searchQuery) {
   const [isLoading, setIsLoading] = useState(true);

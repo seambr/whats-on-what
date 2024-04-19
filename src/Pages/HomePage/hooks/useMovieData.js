@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearch } from "../../../Contexts/SearchContext.js";
-import { apiURL } from "../../../apiURL.js";
-import axios from "axios";
+
 import { supabase } from "../../../utils/supabase.js";
 function useMovieData(pageNumber, setPageNumber) {
   const { query } = useSearch();
