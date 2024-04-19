@@ -7,7 +7,7 @@ function useMovieData(pageNumber, setPageNumber) {
   const { query } = useSearch();
   const [isLoading, setIsLoading] = useState(true);
   const [movieArray, setMovieArray] = useState([]);
-  const [hasMore, setHasMore] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
   const services = Object.keys(query.subscribedServices).filter(
     (s) => query.subscribedServices[s]
   );
@@ -37,7 +37,7 @@ function useMovieData(pageNumber, setPageNumber) {
       "Western",
     ];
   }
-
+  console.log(genreList);
   useEffect(() => {
     setMovieArray([]);
     setPageNumber(1);

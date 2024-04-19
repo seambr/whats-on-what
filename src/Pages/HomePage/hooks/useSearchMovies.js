@@ -16,7 +16,7 @@ function useSearchMovies(searchQuery) {
         const { data: movies, error: error } = await supabase
           .from("movies")
           .select("*")
-          .ilike("title", `%av%`)
+          .ilike("title", `%${searchQuery}%`)
           .range(0, 3);
 
         if (!error) {

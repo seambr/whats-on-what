@@ -64,8 +64,8 @@ function FilterContainer({ genreList }) {
       <h1>Filters</h1>
       <h4>Genres</h4>
       <div className="random-cont">
-        {genreList.map((g) => (
-          <GenreTag text={g} clickable fontSize="0.7rem" />
+        {genreList.map((g, i) => (
+          <GenreTag text={g} key={i} clickable fontSize="0.7rem" />
         ))}
       </div>
     </div>
