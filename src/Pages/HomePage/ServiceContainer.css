@@ -105,6 +105,11 @@
 }
 
 @media only screen and (max-width: 600px) {
+  .filter-container {
+    width: 100%;
+    left: 0;
+    bottom: 0;
+  }
   .wrapper-bar,
   .left-bar {
     grid-column: 1 / 3;

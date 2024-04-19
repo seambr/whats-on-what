@@ -10,9 +10,10 @@ function useMovieData(pageNumber, setPageNumber) {
   const services = Object.keys(query.subscribedServices).filter(
     (s) => query.subscribedServices[s]
   );
-  let genreList;
-  if (query.genreList.length > 0) {
-    genreList = Object.keys(query.genreList).filter((g) => query.genreList[g]);
+  let genreList = Object.keys(query.genreList).filter(
+    (g) => query.genreList[g]
+  );
+  if (genreList.length > 0) {
   } else {
     genreList = [
       "Action",
@@ -49,9 +50,9 @@ function useMovieData(pageNumber, setPageNumber) {
       const { data: movies, error: error } = await supabase
         .from("movies")
         .select("*")
-        .overlaps("availability", services)
         .overlaps("genres", genreList)
-        .range(pageNumber * 20, pageNumber * 20 + 20 - 1);
+        .overlaps("availability", services)
+        .range((pageNumber - 1) * 20, (pageNumber - 1) * 20 + 20 - 1);
 
       if (!error && movies.length > 1) {
         setMovieArray((old) => [...old, ...movies]);
