@@ -35,6 +35,7 @@ function MoviePoster({ movie, isLast, lastElementRef, showAvailibility }) {
               src={movie.posterLink}
               alt={movie.title}
               draggable={false}
+              loading="lazy"
             />
           </div>
         )}
